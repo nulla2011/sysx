@@ -40,6 +40,7 @@ const axios_1 = __importDefault(require("axios"));
 const user_agents_1 = __importDefault(require("user-agents"));
 const parse_wikitext_1 = require("./parse-wikitext");
 const utils_1 = require("./utils");
+const pyszm_1 = require("./pyszm");
 const MOEGIRL_API = new URL('https://zh.moegirl.org.cn/api.php');
 const SEIYUU_LIST = 'seiyuu-list_constrict1.csv';
 const params = {
@@ -55,12 +56,14 @@ class Seiyuu {
     constructor(zhName, wikiName) {
         this.zhName = zhName;
         this.wikiName = wikiName;
+        this.jaName = null;
         this.birth = null;
         this.jimusho = null;
         this.profile = null;
         this.twitter = null;
         this.instagram = null;
         this.blog = null;
+        this.pysx = null;
     }
     getDataFromWiki() {
         var _a, _b, _c, _d;
@@ -79,7 +82,13 @@ class Seiyuu {
                 process.exit(0);
             }
             if (response.headers['content-type'].includes('text/html')) {
-                (0, utils_1.logError)(`你被拉黑了！停在了 ${this.zhName}`);
+                if (response.data.includes('Captcha')) {
+                    (0, utils_1.logError)('可能需要去拖一下验证码');
+                }
+                else {
+                    (0, utils_1.logError)(`你被拉黑了！`);
+                }
+                (0, utils_1.logError)(`停在了 ${this.zhName}`);
                 process.exit(0);
             }
             let wikiText = getWikiData(response.data);
@@ -98,6 +107,9 @@ class Seiyuu {
             }
         });
     }
+    setPysx() {
+        this.pysx = (0, utils_1.isAllChinese)(this.zhName) ? (0, pyszm_1.pyszm)(this.zhName) : null;
+    }
 }
 const getWikiData = (data) => {
     let pages = data.query.pages;
@@ -111,6 +123,7 @@ const main = (arg) => __awaiter(void 0, void 0, void 0, function* () {
         wikiName = decodeURI(wikiName.trim().replace('https://zh.moegirl.org.cn/', '')); //有些有歧义的会备注括号声优
         let seiyuu = new Seiyuu(name, wikiName);
         yield seiyuu.getDataFromWiki();
+        seiyuu.setPysx();
         for (const key in seiyuu) {
             if (Object.prototype.hasOwnProperty.call(seiyuu, key)) {
                 if (!seiyuu[key]) {
@@ -124,6 +137,7 @@ const main = (arg) => __awaiter(void 0, void 0, void 0, function* () {
             }
         }
         console.log(seiyuu.jaName);
+        console.log(seiyuu.pysx);
         yield (0, utils_1.randomTimeShort)();
     }
 });

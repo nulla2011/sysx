@@ -60,6 +60,9 @@ function removeInternalLink(text: string) {
 function removeSource(text: string) {
   return text.replace(/{{来源请求\|([^{}]*?)}}/g, '');
 }
+function replaceLangJa(text: string) {
+  return text.replace(/{{lang\|ja\|/g, '{{lj|');
+}
 
 function getSeiyuInfoTemplate(text: string) {
   return sliceText(text.replace(/\s/g, ''), /{{声优信息/);
@@ -78,36 +81,48 @@ function getName(templateText: string) {
     return nameString.replace(/\|姓名=([^{}]*?)\|/, '$1');
   }
   let name = [];
-  //todo: remove lj
+  nameString = replaceLangJa(removeHeimu(nameString));
   let mJpn =
     nameString.match(/{{jpn\|([^{}]*?)}}/i) ??
     nameString.match(/{{日本人名\|([^{}]*?)}}/); //jpn=日本人名，这种模板应该只有一个吧？
+  // let mLjRuby = nameString.match(
+  //   /{{lj\|(([^{}])|{{ruby\|([^|]*)\|([^|]*)*?}})(([^{}])|{{ruby\|([^|]*)\|([^|]*)*?}})?(([^{}])|{{ruby\|([^|]*)\|([^|]*)*?}})?/i
+  // ); //废案
+  let mLjRuby = nameString.match(/{{lj\|{{ruby\|[^}]*?}}([^{}]*)}}/i); //只能匹配名为假名
   let mRuby = nameString.matchAll(/{{ruby\|([^{}]*?)}}/gi); //ruby的不止姓和名
-  let mLangJa = nameString.matchAll(/{{lang\|ja\|([^{}]*?)}}/gi);
+  // let mLangJa = nameString.matchAll(/{{lang\|ja\|([^{}]*?)}}/gi);
   let mLj = nameString.matchAll(/{{lj\|([^{}]*?)}}/gi); //lang-ja = lj
   if (mJpn) {
     let splitBar = mJpn[1].split('|');
     name.push([splitBar[0], splitBar[1]]);
     name.push([splitBar[2], splitBar[3]]);
   }
-  if (mRuby || mLangJa || mLj) {
+  if (mRuby || mLj) {
     for (const ruby of mRuby) {
       let splitBar = ruby[1].split('|');
       name.push([splitBar[0], splitBar[1]]);
     }
-    for (const lja of mLangJa) {
-      //一般纯假名的都是名字吧 懒得排序了
-      let splitBar = lja[1].split('|');
-      name.push([splitBar[0], splitBar[1]]);
+    if (mLjRuby) {
+      name.push([mLjRuby[1], null]);
     }
+    // for (const lja of mLangJa) {
+    //   //一般纯假名的都是名字吧 懒得排序了
+    //   let splitBar = lja[1].split('|');
+    //   name.push([splitBar[0], splitBar[1]]);
+    // }
     for (const lj of mLj) {
       //一般纯假名的都是名字吧 懒得排序了
       let splitBar = lj[1].split('|');
       name.push([splitBar[0], splitBar[1]]);
     }
   }
-  //替换空内容替换问号
-  return name;
+  return name.map((l) =>
+    l.map((i) => {
+      if (i == '' || i == '?' || i == undefined) {
+        return null;
+      } else return i;
+    })
+  );
 }
 function getBirth(templateText: string) {
   return removeSource(
@@ -161,8 +176,9 @@ function getLinks(text: string) {
     links.profile = linkText.match(
       /\[(https?:\/\/[\S]*?) (事务所(官方资料|网站)|(事(务|務)所|官方)(个人|個人|官网)?(介绍|介紹|信息)(页|頁)?)[^\]]*?\]/i
     )?.[1];
-    links.twitter = linkText.match(/\[(https?:\/\/[\S]*?) .*?(twitter|推特)\]/i)?.[1];
-    links.instagram = linkText.match(/\[(https?:\/\/[\S]*?) .*?ins\]/i)?.[1];
+    links.twitter = linkText.match(/\[(https?:\/\/[\S]*?) .*?(twitter|推特).*?\]/i)?.[1];
+    links.instagram = linkText.match(/\[(https?:\/\/[\S]*?) .*?ins(tagram)?.*?\]/i)?.[1];
+    links.blog = linkText.match(/\[(https?:\/\/[\S]*?) .*?(blog|博客)\]/i)?.[1];
   }
   return links;
 }

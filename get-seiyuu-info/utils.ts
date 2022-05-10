@@ -15,3 +15,12 @@ export function randomTimeShort() {
     setTimeout(() => resolve(), timeout);
   });
 }
+export function isAllChinese(text: string) {
+  for (let i = 0; i < text.length; i++) {
+    let c = text.charCodeAt(i);
+    if (c < parseInt('4E00', 16) || c > parseInt('9FFF', 16)) {
+      return false;
+    }
+  }
+  return true;
+}
