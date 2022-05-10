@@ -9,9 +9,11 @@
   "author": "nulla",
   "dependencies": {
     "axios": "^0.26.1",
+    "chalk": "^4.1.2",
     "lodash": "^4.17.21",
     "pinyin": "^2.11.2",
-    "user-agents": "^1.0.979"
+    "user-agents": "^1.0.979",
+    "yaml": "^2.0.1"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.181",

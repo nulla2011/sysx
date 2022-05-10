@@ -44,7 +44,7 @@ function sliceText(text, startReg, endMark = '}') {
         }
         end++;
     }
-    return text.slice(mStart.index + mStart[0].length, end - (endMark == '}' ? 1 : 0)); //double curly brackets 
+    return text.slice(mStart.index + mStart[0].length, end - (endMark == '}' ? 1 : 0)); //double curly brackets
 }
 function removeHeimu(text) {
     return text.replace(/{{黑幕\|([^{}]*?)}}/g, '$1');
@@ -73,17 +73,17 @@ function getName(templateText) {
     // console.log(nameString);
     // if (nameString == "|姓名=|") nameString = sliceText(templateText, '|本名=', '|')!;
     if (/{{黑幕/.test(nameString)) {
-        console.error("有黑木！！");
+        console.error('有黑幕！！');
     }
-    if (!(/{/.test(nameString))) {
+    if (!/{/.test(nameString)) {
         return nameString.replace(/\|姓名=([^{}]*?)\|/, '$1');
     }
     let name = [];
     //todo: remove lj
     let mJpn = (_a = nameString.match(/{{jpn\|([^{}]*?)}}/i)) !== null && _a !== void 0 ? _a : nameString.match(/{{日本人名\|([^{}]*?)}}/); //jpn=日本人名，这种模板应该只有一个吧？
-    let mRuby = nameString.matchAll(/{{ruby\|([^{}]*?)}}/ig); //ruby的不止姓和名
-    let mLangJa = nameString.matchAll(/{{lang\|ja\|([^{}]*?)}}/ig);
-    let mLj = nameString.matchAll(/{{lj\|([^{}]*?)}}/ig); //lang-ja = lj
+    let mRuby = nameString.matchAll(/{{ruby\|([^{}]*?)}}/gi); //ruby的不止姓和名
+    let mLangJa = nameString.matchAll(/{{lang\|ja\|([^{}]*?)}}/gi);
+    let mLj = nameString.matchAll(/{{lj\|([^{}]*?)}}/gi); //lang-ja = lj
     if (mJpn) {
         let splitBar = mJpn[1].split('|');
         name.push([splitBar[0], splitBar[1]]);
@@ -94,11 +94,13 @@ function getName(templateText) {
             let splitBar = ruby[1].split('|');
             name.push([splitBar[0], splitBar[1]]);
         }
-        for (const lja of mLangJa) { //一般纯假名的都是名字吧 懒得排序了
+        for (const lja of mLangJa) {
+            //一般纯假名的都是名字吧 懒得排序了
             let splitBar = lja[1].split('|');
             name.push([splitBar[0], splitBar[1]]);
         }
-        for (const lj of mLj) { //一般纯假名的都是名字吧 懒得排序了
+        for (const lj of mLj) {
+            //一般纯假名的都是名字吧 懒得排序了
             let splitBar = lj[1].split('|');
             name.push([splitBar[0], splitBar[1]]);
         }
@@ -113,7 +115,7 @@ function getBirth(templateText) {
 function getJimusho(templateText) {
     let jimushoString = sliceText(templateText, /\|所属公司=/, '|');
     if (jimushoString == null) {
-        return '';
+        return null;
     }
     jimushoString = removeDel(removeRef(removeHeimu(removeInternalLink(jimushoString))));
     let list = jimushoString.split(/、|<br>|<br\/>/);
@@ -132,7 +134,7 @@ function getJimusho(templateText) {
             }
         }
     }
-    return '';
+    return null;
 }
 function getLinks(text) {
     var _a, _b, _c;
@@ -144,7 +146,7 @@ function getLinks(text) {
     }
     else {
         let linkText = text.substring(linkIndex);
-        console.log(linkText);
+        // console.log(linkText);
         links.profile = (_a = linkText.match(/\[(https?:\/\/[\S]*?) (事务所(官方资料|网站)|(事(务|務)所|官方)(个人|個人|官网)?(介绍|介紹|信息)(页|頁)?)[^\]]*?\]/i)) === null || _a === void 0 ? void 0 : _a[1];
         links.twitter = (_b = linkText.match(/\[(https?:\/\/[\S]*?) .*?(twitter|推特)\]/i)) === null || _b === void 0 ? void 0 : _b[1];
         links.instagram = (_c = linkText.match(/\[(https?:\/\/[\S]*?) .*?ins\]/i)) === null || _c === void 0 ? void 0 : _c[1];
@@ -157,6 +159,6 @@ function parseWiki(text) {
     let birth = getBirth(template);
     let jimusho = getJimusho(template);
     let links = getLinks(text);
-    return [name, birth, jimusho, links];
+    return { name, birth, jimusho, links };
 }
 exports.parseWiki = parseWiki;

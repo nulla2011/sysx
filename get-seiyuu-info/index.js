@@ -39,8 +39,9 @@ const fs = __importStar(require("fs"));
 const axios_1 = __importDefault(require("axios"));
 const user_agents_1 = __importDefault(require("user-agents"));
 const parse_wikitext_1 = require("./parse-wikitext");
+const utils_1 = require("./utils");
 const MOEGIRL_API = new URL('https://zh.moegirl.org.cn/api.php');
-const SEIYUU_LIST = "seiyuu-list_constrict1.csv";
+const SEIYUU_LIST = 'seiyuu-list_constrict1.csv';
 const params = {
     action: 'query',
     format: 'json',
@@ -50,43 +51,80 @@ const params = {
 for (const key in params) {
     MOEGIRL_API.searchParams.set(key, params[key]);
 }
-class seiyuu {
-    constructor(name, origName) { }
+class Seiyuu {
+    constructor(zhName, wikiName) {
+        this.zhName = zhName;
+        this.wikiName = wikiName;
+        this.birth = null;
+        this.jimusho = null;
+        this.profile = null;
+        this.twitter = null;
+        this.instagram = null;
+        this.blog = null;
+    }
+    getDataFromWiki() {
+        var _a, _b, _c, _d;
+        return __awaiter(this, void 0, void 0, function* () {
+            MOEGIRL_API.searchParams.set('titles', this.wikiName);
+            let response;
+            try {
+                response = yield axios_1.default.get(MOEGIRL_API.href, {
+                    headers: {
+                        'user-agent': new user_agents_1.default().toString(),
+                    },
+                });
+            }
+            catch (error) {
+                console.error(error);
+                process.exit(0);
+            }
+            if (response.headers['content-type'].includes('text/html')) {
+                (0, utils_1.logError)(`你被拉黑了！停在了 ${this.zhName}`);
+                process.exit(0);
+            }
+            let wikiText = getWikiData(response.data);
+            try {
+                let c = (0, parse_wikitext_1.parseWiki)(wikiText);
+                this.jaName = c.name;
+                this.birth = c.birth;
+                this.jimusho = c.jimusho;
+                this.twitter = (_a = c.links.twitter) !== null && _a !== void 0 ? _a : null;
+                this.instagram = (_b = c.links.instagram) !== null && _b !== void 0 ? _b : null;
+                this.blog = (_c = c.links.blog) !== null && _c !== void 0 ? _c : null;
+                this.profile = (_d = c.links.profile) !== null && _d !== void 0 ? _d : null;
+            }
+            catch (error) {
+                (0, utils_1.logError)(`${this.wikiName} ${error}`);
+            }
+        });
+    }
 }
 const getWikiData = (data) => {
     let pages = data.query.pages;
-    return pages[Object.keys(pages)[0]].revisions[0]["*"];
+    return pages[Object.keys(pages)[0]].revisions[0]['*'];
 };
 const main = (arg) => __awaiter(void 0, void 0, void 0, function* () {
-    let l = fs.readFileSync(__dirname + '/' + SEIYUU_LIST, 'utf-8').split('\n');
+    let csvl = fs.readFileSync(__dirname + '/' + SEIYUU_LIST, 'utf-8').split('\n');
     let start = arg ? parseInt(arg) - 1 : Math.floor(Math.random() * 694);
     for (let i = start; i < start + 4; i++) {
-        let name = decodeURI(l[i].split(',')[1].trim().replace('https://zh.moegirl.org.cn/', '')); //有些有歧义的会备注声优
-        MOEGIRL_API.searchParams.set('titles', name);
-        let response;
-        try {
-            response = yield axios_1.default.get(MOEGIRL_API.href, {
-                headers: {
-                    'user-agent': new user_agents_1.default().toString()
+        let [name, wikiName] = csvl[i].split(',');
+        wikiName = decodeURI(wikiName.trim().replace('https://zh.moegirl.org.cn/', '')); //有些有歧义的会备注括号声优
+        let seiyuu = new Seiyuu(name, wikiName);
+        yield seiyuu.getDataFromWiki();
+        for (const key in seiyuu) {
+            if (Object.prototype.hasOwnProperty.call(seiyuu, key)) {
+                if (!seiyuu[key]) {
+                    if (key == 'blog' || key == 'twitter' || key == 'instagram') {
+                        (0, utils_1.logWarning)(`${seiyuu.zhName} : ${key} is NULL!!!`);
+                    }
+                    else {
+                        (0, utils_1.logError)(`${seiyuu.zhName} : ${key} is NULL!!!`);
+                    }
                 }
-            });
+            }
         }
-        catch (error) {
-            console.error(`${error}`);
-            process.exit(0);
-        }
-        if (response.headers['content-type'].includes('text/html')) {
-            console.log(`你被拉黑了！停在了 ${response.config.url}`);
-            process.exit(0);
-        }
-        let wikiText = getWikiData(response.data);
-        try {
-            console.log((0, parse_wikitext_1.parseWiki)(wikiText));
-        }
-        catch (error) {
-            console.error(`${name} ${error}`);
-        }
+        console.log(seiyuu.jaName);
+        yield (0, utils_1.randomTimeShort)();
     }
-    ;
 });
 main(process.argv[2]);
