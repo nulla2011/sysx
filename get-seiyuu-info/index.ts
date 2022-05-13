@@ -29,7 +29,10 @@ class Seiyuu {
   public instagram: string | null = null;
   public blog: string | null = null;
   public pysx: string | null = null;
-  constructor(public zhName: string, private wikiName: string) {}
+  public shouldBeCheck;
+  constructor(public zhName: string, private wikiName: string) {
+    this.shouldBeCheck = false;
+  }
   public async getDataFromWiki() {
     MOEGIRL_API.searchParams.set('titles', this.wikiName);
     let response: AxiosResponse;
@@ -77,6 +80,7 @@ const getWikiData = (data: any): string => {
 const main = async (arg: string) => {
   let csvl = fs.readFileSync(__dirname + '/' + SEIYUU_LIST, 'utf-8').split('\n');
   let start = arg ? parseInt(arg) - 1 : Math.floor(Math.random() * 694);
+  console.log(start);
   for (let i = start; i < start + 4; i++) {
     let [name, wikiName] = csvl[i].split(',');
     wikiName = decodeURI(wikiName.trim().replace('https://zh.moegirl.org.cn/', '')); //有些有歧义的会备注括号声优
@@ -88,10 +92,19 @@ const main = async (arg: string) => {
         if (!seiyuu[key]) {
           if (key == 'blog' || key == 'twitter' || key == 'instagram') {
             logWarning(`${seiyuu.zhName} : ${key} is NULL!!!`);
+          } else if (key == 'shouldBeCheck') {
           } else {
             logError(`${seiyuu.zhName} : ${key} is NULL!!!`);
+            seiyuu.shouldBeCheck = true;
           }
         }
+      }
+    }
+    if (seiyuu.jaName instanceof Array) {
+      if (seiyuu.jaName.length == 1) {
+        seiyuu.shouldBeCheck = true;
+      } else if (!seiyuu.jaName[1][0]) {
+        seiyuu.shouldBeCheck = true;
       }
     }
     console.log(seiyuu.jaName);

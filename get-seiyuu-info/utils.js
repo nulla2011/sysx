@@ -3,10 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isAllChinese = exports.randomTimeShort = exports.logWarning = exports.log = exports.logError = void 0;
+exports.Stack = exports.isAllChinese = exports.randomTimeShort = exports.logWarning = exports.log = exports.logError = void 0;
 const chalk_1 = __importDefault(require("chalk"));
 function logError(text) {
-    console.log(chalk_1.default.bgRed.white(text));
+    console.error(chalk_1.default.bgRed.white(text));
 }
 exports.logError = logError;
 function log(text) {
@@ -34,3 +34,18 @@ function isAllChinese(text) {
     return true;
 }
 exports.isAllChinese = isAllChinese;
+class Stack {
+    constructor() {
+        this.items = 0;
+    }
+    push() {
+        this.items++;
+    }
+    pop() {
+        this.items--;
+    }
+    isEmpty() {
+        return this.items == 0;
+    }
+}
+exports.Stack = Stack;

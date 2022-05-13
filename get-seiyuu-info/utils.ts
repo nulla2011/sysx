@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 
 export function logError(text: string) {
-  console.log(chalk.bgRed.white(text));
+  console.error(chalk.bgRed.white(text));
 }
 export function log(text: string) {
   console.log(chalk.white(text));
@@ -23,4 +23,20 @@ export function isAllChinese(text: string) {
     }
   }
   return true;
+}
+
+export class Stack {
+  private items: number;
+  constructor() {
+    this.items = 0;
+  }
+  push() {
+    this.items++;
+  }
+  pop() {
+    this.items--;
+  }
+  isEmpty() {
+    return this.items == 0;
+  }
 }

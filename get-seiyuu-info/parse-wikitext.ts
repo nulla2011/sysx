@@ -1,28 +1,15 @@
 // import wtf from 'wtf_wikipedia';
+import { link } from 'fs';
+import { logError, Stack } from './utils';
 
 // export function getInfoFromText(text: string) {
 //     let t = wtf(text).section('参见')?.links();
 //     console.log(t);
 // }
-class Stack {
-  private items: number;
-  constructor() {
-    this.items = 0;
-  }
-  push() {
-    this.items++;
-  }
-  pop() {
-    this.items--;
-  }
-  isEmpty() {
-    return this.items == 0;
-  }
-}
 function sliceText(text: string, startReg: RegExp, endMark = '}') {
   let mStart = text.match(startReg)!;
   if (!mStart) {
-    console.error(`can\'t find ${startReg}`);
+    logError(`can\'t find ${startReg}`);
     return null;
   }
   let curlyBrackets = new Stack();
@@ -71,6 +58,9 @@ function getName(templateText: string) {
   let nameString = sliceText(templateText, /\|姓名=/, '|');
   if (nameString == '' || nameString == null) {
     nameString = sliceText(templateText, /\|本名=/, '|')!;
+  }
+  if (nameString == null) {
+    return null;
   }
   // console.log(nameString);
   // if (nameString == "|姓名=|") nameString = sliceText(templateText, '|本名=', '|')!;
@@ -165,7 +155,7 @@ interface Ilinks {
   blog?: string;
 }
 function getLinks(text: string) {
-  let linkIndex = text.search(/={1,5}.*?外部链接.*?={1,5}/);
+  let linkIndex = text.search(/={1,5}.*?(外部链接|链接与(外部)?注释).*?={1,5}/);
   let links: Ilinks = {};
   if (linkIndex == -1) {
     console.error("can't find 外部链接");
@@ -177,8 +167,14 @@ function getLinks(text: string) {
       /\[(https?:\/\/[\S]*?) (事务所(官方资料|网站)|(事(务|務)所|官方)(个人|個人|官网)?(介绍|介紹|信息)(页|頁)?)[^\]]*?\]/i
     )?.[1];
     links.twitter = linkText.match(/\[(https?:\/\/[\S]*?) .*?(twitter|推特).*?\]/i)?.[1];
+    if (!links.twitter) {
+      links.twitter = linkText.match(/{{Twitter\|.*?id=([\w\d_]+)(\||})/i)?.[1]; //有可能用的是推特模板，比如中村绘里子的页面
+      if (links.twitter) {
+        links.twitter = 'https://twitter.com/' + links.twitter;
+      }
+    }
     links.instagram = linkText.match(/\[(https?:\/\/[\S]*?) .*?ins(tagram)?.*?\]/i)?.[1];
-    links.blog = linkText.match(/\[(https?:\/\/[\S]*?) .*?(blog|博客)\]/i)?.[1];
+    links.blog = linkText.match(/\[(https?:\/\/[\S]*?) .*?(blog|博客).*?\]/i)?.[1];
   }
   return links;
 }

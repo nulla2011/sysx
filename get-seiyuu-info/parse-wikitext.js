@@ -1,32 +1,18 @@
 "use strict";
-// import wtf from 'wtf_wikipedia';
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.parseWiki = void 0;
+const utils_1 = require("./utils");
 // export function getInfoFromText(text: string) {
 //     let t = wtf(text).section('参见')?.links();
 //     console.log(t);
 // }
-class Stack {
-    constructor() {
-        this.items = 0;
-    }
-    push() {
-        this.items++;
-    }
-    pop() {
-        this.items--;
-    }
-    isEmpty() {
-        return this.items == 0;
-    }
-}
 function sliceText(text, startReg, endMark = '}') {
     let mStart = text.match(startReg);
     if (!mStart) {
-        console.error(`can\'t find ${startReg}`);
+        (0, utils_1.logError)(`can\'t find ${startReg}`);
         return null;
     }
-    let curlyBrackets = new Stack();
+    let curlyBrackets = new utils_1.Stack();
     let end = mStart.index + 1;
     while (true) {
         switch (text[end]) {
@@ -72,6 +58,9 @@ function getName(templateText) {
     let nameString = sliceText(templateText, /\|姓名=/, '|');
     if (nameString == '' || nameString == null) {
         nameString = sliceText(templateText, /\|本名=/, '|');
+    }
+    if (nameString == null) {
+        return null;
     }
     // console.log(nameString);
     // if (nameString == "|姓名=|") nameString = sliceText(templateText, '|本名=', '|')!;
@@ -152,8 +141,8 @@ function getJimusho(templateText) {
     return null;
 }
 function getLinks(text) {
-    var _a, _b, _c, _d;
-    let linkIndex = text.search(/={1,5}.*?外部链接.*?={1,5}/);
+    var _a, _b, _c, _d, _e;
+    let linkIndex = text.search(/={1,5}.*?(外部链接|链接与(外部)?注释).*?={1,5}/);
     let links = {};
     if (linkIndex == -1) {
         console.error("can't find 外部链接");
@@ -164,8 +153,14 @@ function getLinks(text) {
         // console.log(linkText);
         links.profile = (_a = linkText.match(/\[(https?:\/\/[\S]*?) (事务所(官方资料|网站)|(事(务|務)所|官方)(个人|個人|官网)?(介绍|介紹|信息)(页|頁)?)[^\]]*?\]/i)) === null || _a === void 0 ? void 0 : _a[1];
         links.twitter = (_b = linkText.match(/\[(https?:\/\/[\S]*?) .*?(twitter|推特).*?\]/i)) === null || _b === void 0 ? void 0 : _b[1];
-        links.instagram = (_c = linkText.match(/\[(https?:\/\/[\S]*?) .*?ins(tagram)?.*?\]/i)) === null || _c === void 0 ? void 0 : _c[1];
-        links.blog = (_d = linkText.match(/\[(https?:\/\/[\S]*?) .*?(blog|博客)\]/i)) === null || _d === void 0 ? void 0 : _d[1];
+        if (!links.twitter) {
+            links.twitter = (_c = linkText.match(/{{Twitter\|.*?id=([\w\d_]+)(\||})/i)) === null || _c === void 0 ? void 0 : _c[1]; //有可能用的是推特模板，比如中村绘里子的页面
+            if (links.twitter) {
+                links.twitter = 'https://twitter.com/' + links.twitter;
+            }
+        }
+        links.instagram = (_d = linkText.match(/\[(https?:\/\/[\S]*?) .*?ins(tagram)?.*?\]/i)) === null || _d === void 0 ? void 0 : _d[1];
+        links.blog = (_e = linkText.match(/\[(https?:\/\/[\S]*?) .*?(blog|博客).*?\]/i)) === null || _e === void 0 ? void 0 : _e[1];
     }
     return links;
 }
