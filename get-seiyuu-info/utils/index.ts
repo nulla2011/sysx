@@ -7,7 +7,7 @@ export function log(text: string) {
   console.log(chalk.white(text));
 }
 export function logWarning(text: string) {
-  console.log(chalk.bgYellow.white(text));
+  console.log(chalk.bgHex('#A0A000').white(text));
 }
 export function randomTimeShort() {
   let timeout = (Math.random() * 5 + 5) * 1000;

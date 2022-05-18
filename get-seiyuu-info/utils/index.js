@@ -14,7 +14,7 @@ function log(text) {
 }
 exports.log = log;
 function logWarning(text) {
-    console.log(chalk_1.default.bgYellow.white(text));
+    console.log(chalk_1.default.bgHex('#A0A000').white(text));
 }
 exports.logWarning = logWarning;
 function randomTimeShort() {

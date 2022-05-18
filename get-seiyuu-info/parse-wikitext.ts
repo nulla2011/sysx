@@ -1,5 +1,4 @@
 // import wtf from 'wtf_wikipedia';
-import { link } from 'fs';
 import { logError, Stack } from './utils';
 
 // export function getInfoFromText(text: string) {
@@ -36,7 +35,7 @@ function removeHeimu(text: string) {
   return text.replace(/{{黑幕\|([^{}]*?)}}/g, '$1');
 }
 function removeRef(text: string) {
-  return text.replace(/<ref>.*?<\/ref>/g, '');
+  return text.replace(/<ref[^>]*?>.*?<\/ref>/g, '');
 }
 function removeDel(text: string) {
   return text.replace(/<del>.*?<\/del>/g, '');
@@ -52,7 +51,7 @@ function replaceLangJa(text: string) {
 }
 
 function getSeiyuInfoTemplate(text: string) {
-  return sliceText(text.replace(/\s/g, ''), /{{声优信息/);
+  return sliceText(text, /{{声优信息/);
 }
 function getName(templateText: string) {
   let nameString = sliceText(templateText, /\|姓名=/, '|');
@@ -106,13 +105,13 @@ function getName(templateText: string) {
       name.push([splitBar[0], splitBar[1]]);
     }
   }
-  return name.map((l) =>
-    l.map((i) => {
-      if (i == '' || i == '?' || i == undefined) {
-        return null;
-      } else return i;
-    })
-  );
+  return name.map((l) => {
+    l = l.map((i) => (i == '' || i == '?' || i == undefined ? null : i));
+    if (l[0] == l[1]) {
+      l[1] = null;
+    }
+    return l;
+  });
 }
 function getBirth(templateText: string) {
   return removeSource(
@@ -127,17 +126,17 @@ function getBirth(templateText: string) {
   );
 }
 function getJimusho(templateText: string) {
-  let jimushoString = sliceText(templateText, /\|所属公司=/, '|');
+  let jimushoString = sliceText(templateText, /\|所属公司\s*=/, '|')?.trim();
   if (jimushoString == null) {
     return null;
   }
   jimushoString = removeDel(removeRef(removeHeimu(removeInternalLink(jimushoString))));
-  let list = jimushoString.split(/、|<br>|<br\/>/);
+  let list = jimushoString.split(/、|<br ?\/?>|\n/);
   if (list.length == 1) {
     return jimushoString.replace(/(\(|（).*?事务所(\)|）)/, '');
   } else {
     for (const j of list) {
-      if (j.match(/声优事务|事务所/)) {
+      if (j.match(/声优事务|事务所|聲優事務所/)) {
         if (j.includes('：')) {
           return j.split('：')[1];
         } else if (j.includes('（') || j.includes('(')) {
@@ -155,7 +154,7 @@ interface Ilinks {
   blog?: string;
 }
 function getLinks(text: string) {
-  let linkIndex = text.search(/={1,5}.*?(外部链接|链接与(外部)?注释).*?={1,5}/);
+  let linkIndex = text.search(/={1,5}.*?(外部(链|鏈)接|链接与(外部)?注释).*?={1,5}/);
   let links: Ilinks = {};
   if (linkIndex == -1) {
     console.error("can't find 外部链接");
@@ -164,7 +163,7 @@ function getLinks(text: string) {
     let linkText = text.substring(linkIndex);
     // console.log(linkText);
     links.profile = linkText.match(
-      /\[(https?:\/\/[\S]*?) (事务所(官方资料|网站)|(事(务|務)所|官方)(个人|個人|官网)?(介绍|介紹|信息)(页|頁)?)[^\]]*?\]/i
+      /\[(https?:\/\/[\S]*?) (事务所(官方资料|网站)|(事(务|務)所|官方)(个人|個人|官网|官方)?(介绍|介紹|信息)(页|頁)?)[^\]]*?\]/i
     )?.[1];
     links.twitter = linkText.match(/\[(https?:\/\/[\S]*?) .*?(twitter|推特).*?\]/i)?.[1];
     if (!links.twitter) {
@@ -180,9 +179,10 @@ function getLinks(text: string) {
 }
 export function parseWiki(text: string) {
   let template = getSeiyuInfoTemplate(text)!;
-  let name = getName(template);
-  let birth = getBirth(template);
+  let name = getName(template.replace(/\s/g, ''));
+  let birth = getBirth(template.replace(/\s/g, ''));
   let jimusho = getJimusho(template);
+  jimusho = jimusho && jimusho.trim();
   let links = getLinks(text);
   return { name, birth, jimusho, links };
 }

@@ -5,6 +5,7 @@ import { parseWiki } from './parse-wikitext';
 import YAML from 'yaml';
 import { isAllChinese, logError, logWarning, randomTimeShort } from './utils';
 import { pyszm } from './pyszm';
+import { formatJimusho } from './utils/formatJimusho';
 
 const MOEGIRL_API = new URL('https://zh.moegirl.org.cn/api.php');
 const SEIYUU_LIST = 'seiyuu-list_constrict1.csv';
@@ -20,6 +21,7 @@ const params: Iparams = {
 for (const key in params) {
   MOEGIRL_API.searchParams.set(key, params[key]);
 }
+
 class Seiyuu {
   public jaName: string | null | (string | null)[][] = null;
   public birth: string | null = null;
@@ -29,9 +31,9 @@ class Seiyuu {
   public instagram: string | null = null;
   public blog: string | null = null;
   public pysx: string | null = null;
-  public shouldBeCheck;
+  public check;
   constructor(public zhName: string, private wikiName: string) {
-    this.shouldBeCheck = false;
+    this.check = false;
   }
   public async getDataFromWiki() {
     MOEGIRL_API.searchParams.set('titles', this.wikiName);
@@ -60,7 +62,7 @@ class Seiyuu {
       let c = parseWiki(wikiText);
       this.jaName = c.name;
       this.birth = c.birth;
-      this.jimusho = c.jimusho;
+      this.jimusho = formatJimusho(c.jimusho);
       this.twitter = c.links!.twitter ?? null;
       this.instagram = c.links!.instagram ?? null;
       this.blog = c.links!.blog ?? null;
@@ -92,23 +94,24 @@ const main = async (arg: string) => {
         if (!seiyuu[key]) {
           if (key == 'blog' || key == 'twitter' || key == 'instagram') {
             logWarning(`${seiyuu.zhName} : ${key} is NULL!!!`);
-          } else if (key == 'shouldBeCheck') {
+          } else if (key == 'check') {
           } else {
             logError(`${seiyuu.zhName} : ${key} is NULL!!!`);
-            seiyuu.shouldBeCheck = true;
+            seiyuu.check = true;
           }
         }
       }
     }
     if (seiyuu.jaName instanceof Array) {
       if (seiyuu.jaName.length == 1) {
-        seiyuu.shouldBeCheck = true;
+        seiyuu.check = true;
       } else if (!seiyuu.jaName[1][0]) {
-        seiyuu.shouldBeCheck = true;
+        seiyuu.check = true;
       }
     }
     console.log(seiyuu.jaName);
     console.log(seiyuu.pysx);
+    console.log(seiyuu.jimusho);
     await randomTimeShort();
   }
 };
