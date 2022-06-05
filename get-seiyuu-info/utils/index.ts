@@ -1,5 +1,8 @@
 import chalk from 'chalk';
 
+function hex2int(hex: string) {
+  return parseInt(hex, 16);
+}
 export function logError(text: string) {
   console.error(chalk.bgRed.white(text));
 }
@@ -15,10 +18,20 @@ export function randomTimeShort() {
     setTimeout(() => resolve(), timeout);
   });
 }
+export function randomTimeLong() {
+  let timeout = (Math.random() * 10 + 10) * 1000;
+  return new Promise<void>((resolve) => {
+    setTimeout(() => resolve(), timeout);
+  });
+}
 export function isAllChinese(text: string) {
   for (let i = 0; i < text.length; i++) {
     let c = text.charCodeAt(i);
-    if (c < parseInt('4E00', 16) || c > parseInt('9FFF', 16)) {
+    if (
+      c < hex2int('3400') ||
+      (c > hex2int('4DBF') && c < hex2int('4E00')) ||
+      c > hex2int('9FFF')
+    ) {
       return false;
     }
   }

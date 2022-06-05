@@ -119,7 +119,7 @@ function getBirth(templateText) {
 }
 function getJimusho(templateText) {
     var _a;
-    let jimushoString = (_a = sliceText(templateText, /\|所属公司\s*=/, '|')) === null || _a === void 0 ? void 0 : _a.trim();
+    let jimushoString = (_a = sliceText(templateText, /\|所属(公司|情况)\s*=/, '|')) === null || _a === void 0 ? void 0 : _a.trim();
     if (jimushoString == null) {
         return null;
     }
@@ -143,7 +143,7 @@ function getJimusho(templateText) {
     return null;
 }
 function getLinks(text) {
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d, _e, _f;
     let linkIndex = text.search(/={1,5}.*?(外部(链|鏈)接|链接与(外部)?注释).*?={1,5}/);
     let links = {};
     if (linkIndex == -1) {
@@ -153,16 +153,19 @@ function getLinks(text) {
     else {
         let linkText = text.substring(linkIndex);
         // console.log(linkText);
-        links.profile = (_a = linkText.match(/\[(https?:\/\/[\S]*?) (事务所(官方资料|网站)|(事(务|務)所|官方)(个人|個人|官网|官方)?(介绍|介紹|信息)(页|頁)?)[^\]]*?\]/i)) === null || _a === void 0 ? void 0 : _a[1];
+        links.profile = (_a = linkText.match(/\[(https?:\/\/[\S]*?) (事务所(官方资料|网站)|(事(务|務)所|官方)(个人|個人|官网|官方)?(介绍|介紹|信息|简历)(页|頁)?)[^\]]*?\]/i)) === null || _a === void 0 ? void 0 : _a[1];
         links.twitter = (_b = linkText.match(/\[(https?:\/\/[\S]*?) .*?(twitter|推特).*?\]/i)) === null || _b === void 0 ? void 0 : _b[1];
         if (!links.twitter) {
             links.twitter = (_c = linkText.match(/{{Twitter\|.*?id=([\w\d_]+)(\||})/i)) === null || _c === void 0 ? void 0 : _c[1]; //有可能用的是推特模板，比如中村绘里子的页面
+            if (!links.twitter) {
+                links.twitter = (_d = linkText.match(/{{Twitter\|[\w]*\|([\w\d_]+)(\||})/i)) === null || _d === void 0 ? void 0 : _d[1];
+            }
             if (links.twitter) {
                 links.twitter = 'https://twitter.com/' + links.twitter;
             }
         }
-        links.instagram = (_d = linkText.match(/\[(https?:\/\/[\S]*?) .*?ins(tagram)?.*?\]/i)) === null || _d === void 0 ? void 0 : _d[1];
-        links.blog = (_e = linkText.match(/\[(https?:\/\/[\S]*?) .*?(blog|博客).*?\]/i)) === null || _e === void 0 ? void 0 : _e[1];
+        links.instagram = (_e = linkText.match(/\[(https?:\/\/[\S]*?) .*?ins(tagram)?.*?\]/i)) === null || _e === void 0 ? void 0 : _e[1];
+        links.blog = (_f = linkText.match(/\[(https?:\/\/[\S]*?) .*?(blog|博客).*?\]/i)) === null || _f === void 0 ? void 0 : _f[1];
     }
     return links;
 }

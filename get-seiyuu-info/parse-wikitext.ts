@@ -126,7 +126,7 @@ function getBirth(templateText: string) {
   );
 }
 function getJimusho(templateText: string) {
-  let jimushoString = sliceText(templateText, /\|所属公司\s*=/, '|')?.trim();
+  let jimushoString = sliceText(templateText, /\|所属(公司|情况)\s*=/, '|')?.trim();
   if (jimushoString == null) {
     return null;
   }
@@ -163,11 +163,14 @@ function getLinks(text: string) {
     let linkText = text.substring(linkIndex);
     // console.log(linkText);
     links.profile = linkText.match(
-      /\[(https?:\/\/[\S]*?) (事务所(官方资料|网站)|(事(务|務)所|官方)(个人|個人|官网|官方)?(介绍|介紹|信息)(页|頁)?)[^\]]*?\]/i
+      /\[(https?:\/\/[\S]*?) (事务所(官方资料|网站)|(事(务|務)所|官方)(个人|個人|官网|官方)?(介绍|介紹|信息|简历)(页|頁)?)[^\]]*?\]/i
     )?.[1];
     links.twitter = linkText.match(/\[(https?:\/\/[\S]*?) .*?(twitter|推特).*?\]/i)?.[1];
     if (!links.twitter) {
       links.twitter = linkText.match(/{{Twitter\|.*?id=([\w\d_]+)(\||})/i)?.[1]; //有可能用的是推特模板，比如中村绘里子的页面
+      if (!links.twitter) {
+        links.twitter = linkText.match(/{{Twitter\|[\w]*\|([\w\d_]+)(\||})/i)?.[1];
+      }
       if (links.twitter) {
         links.twitter = 'https://twitter.com/' + links.twitter;
       }

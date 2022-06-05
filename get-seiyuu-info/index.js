@@ -36,14 +36,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("fs"));
+const path_1 = __importDefault(require("path"));
 const axios_1 = __importDefault(require("axios"));
 const user_agents_1 = __importDefault(require("user-agents"));
+const yaml_1 = __importDefault(require("yaml"));
+const lodash_1 = __importDefault(require("lodash"));
 const parse_wikitext_1 = require("./parse-wikitext");
 const utils_1 = require("./utils");
-const pyszm_1 = require("./pyszm");
 const formatJimusho_1 = require("./utils/formatJimusho");
+const pyszm_1 = require("./pyszm");
 const MOEGIRL_API = new URL('https://zh.moegirl.org.cn/api.php');
 const SEIYUU_LIST = 'seiyuu-list_constrict1.csv';
+const SEIYUU_INFO = 'seiyuu-info.yaml';
+const SEIYUU_INFO_PATH = path_1.default.resolve(__dirname, '../', SEIYUU_INFO);
 const params = {
     action: 'query',
     format: 'json',
@@ -57,6 +62,7 @@ class Seiyuu {
     constructor(zhName, wikiName) {
         this.zhName = zhName;
         this.wikiName = wikiName;
+        this.pysx = null;
         this.jaName = null;
         this.birth = null;
         this.jimusho = null;
@@ -64,7 +70,6 @@ class Seiyuu {
         this.twitter = null;
         this.instagram = null;
         this.blog = null;
-        this.pysx = null;
         this.check = false;
     }
     getDataFromWiki() {
@@ -112,48 +117,126 @@ class Seiyuu {
     setPysx() {
         this.pysx = (0, utils_1.isAllChinese)(this.zhName) ? (0, pyszm_1.pyszm)(this.zhName) : null;
     }
-}
-const getWikiData = (data) => {
-    let pages = data.query.pages;
-    return pages[Object.keys(pages)[0]].revisions[0]['*'];
-};
-const main = (arg) => __awaiter(void 0, void 0, void 0, function* () {
-    let csvl = fs.readFileSync(__dirname + '/' + SEIYUU_LIST, 'utf-8').split('\n');
-    let start = arg ? parseInt(arg) - 1 : Math.floor(Math.random() * 694);
-    console.log(start);
-    for (let i = start; i < start + 4; i++) {
-        let [name, wikiName] = csvl[i].split(',');
-        wikiName = decodeURI(wikiName.trim().replace('https://zh.moegirl.org.cn/', '')); //有些有歧义的会备注括号声优
-        let seiyuu = new Seiyuu(name, wikiName);
-        yield seiyuu.getDataFromWiki();
-        seiyuu.setPysx();
-        for (const key in seiyuu) {
-            if (Object.prototype.hasOwnProperty.call(seiyuu, key)) {
-                if (!seiyuu[key]) {
+    warnValue() {
+        for (const key in this) {
+            if (Object.prototype.hasOwnProperty.call(this, key)) {
+                if (!this[key]) {
                     if (key == 'blog' || key == 'twitter' || key == 'instagram') {
-                        (0, utils_1.logWarning)(`${seiyuu.zhName} : ${key} is NULL!!!`);
+                        (0, utils_1.logWarning)(`${this.zhName} : ${key} is NULL!!!`);
                     }
                     else if (key == 'check') {
                     }
                     else {
-                        (0, utils_1.logError)(`${seiyuu.zhName} : ${key} is NULL!!!`);
-                        seiyuu.check = true;
+                        (0, utils_1.logError)(`${this.zhName} : ${key} is NULL!!!`);
+                        this.check = true;
                     }
                 }
             }
         }
-        if (seiyuu.jaName instanceof Array) {
-            if (seiyuu.jaName.length == 1) {
-                seiyuu.check = true;
+        if (this.jaName instanceof Array) {
+            if (this.jaName.length == 1) {
+                this.check = true;
             }
-            else if (!seiyuu.jaName[1][0]) {
-                seiyuu.check = true;
+            else if (!this.jaName[1][0]) {
+                this.check = true;
             }
         }
+    }
+}
+const getWikiData = (data) => {
+    let pages;
+    try {
+        pages = data.query.pages;
+    }
+    catch (error) {
+        console.log(data);
+        process.exit();
+    }
+    return pages[Object.keys(pages)[0]].revisions[0]['*'];
+};
+const appendInfo = () => __awaiter(void 0, void 0, void 0, function* () {
+    for (let i = 0; i < csvl.length; i++) {
+        let [name, wikiName] = csvl[i].split(',');
+        name = name.trim().replace(/\u200E/g, ''); //有些名字后面有神秘的从左向右控制符，比如大野柚布子
+        if (info[name])
+            continue;
+        wikiName = decodeURI(wikiName.trim().replace('https://zh.moegirl.org.cn/', '')); //有些有歧义的会备注括号声优
+        let seiyuu = new Seiyuu(name, wikiName);
+        yield seiyuu.getDataFromWiki();
+        seiyuu.setPysx();
+        seiyuu.warnValue();
         console.log(seiyuu.jaName);
         console.log(seiyuu.pysx);
         console.log(seiyuu.jimusho);
-        yield (0, utils_1.randomTimeShort)();
+        fs.appendFileSync(SEIYUU_INFO_PATH, yaml_1.default.stringify({
+            [seiyuu.zhName]: lodash_1.default.omit(seiyuu, ['zhName', 'wikiName']),
+        }), 'utf-8');
+        yield (0, utils_1.randomTimeLong)();
     }
 });
-main(process.argv[2]);
+const updateInfo = (name) => __awaiter(void 0, void 0, void 0, function* () {
+    let seiyuu = yield queryInfo(name);
+    if (seiyuu) {
+        if (info[seiyuu.zhName]) {
+            info[seiyuu.zhName] = lodash_1.default.omit(seiyuu, ['zhName', 'wikiName']);
+            fs.writeFileSync(SEIYUU_INFO_PATH, yaml_1.default.stringify(info));
+            (0, utils_1.log)('write success!');
+        }
+        else {
+            (0, utils_1.logError)('not found!');
+        }
+    }
+});
+const queryInfo = (name) => __awaiter(void 0, void 0, void 0, function* () {
+    for (const l of csvl) {
+        if (l.startsWith(name)) {
+            let wikiName = l.split(',')[1];
+            wikiName = decodeURI(wikiName.trim().replace('https://zh.moegirl.org.cn/', '')); //有些有歧义的会备注括号声优
+            let seiyuu = new Seiyuu(name, wikiName);
+            yield seiyuu.getDataFromWiki();
+            seiyuu.setPysx();
+            seiyuu.warnValue();
+            console.log(seiyuu.jaName);
+            console.log(seiyuu.pysx);
+            console.log(seiyuu.jimusho);
+            return seiyuu;
+        }
+    }
+    return null;
+});
+const main = (arg1, arg2) => __awaiter(void 0, void 0, void 0, function* () {
+    if (!arg1) {
+        appendInfo();
+    }
+    if (arg1 == 'test') {
+        queryInfo(arg2);
+    }
+    if (arg1 == 'update') {
+        updateInfo(arg2);
+    }
+});
+let csvl = fs.readFileSync(path_1.default.resolve(__dirname, SEIYUU_LIST), 'utf-8').split('\n');
+let finfo;
+try {
+    finfo = fs.readFileSync(SEIYUU_INFO_PATH, 'utf-8');
+}
+catch (error) {
+    (0, utils_1.logError)(`${SEIYUU_INFO} not exists!`);
+    try {
+        fs.copyFileSync(SEIYUU_INFO_PATH, SEIYUU_INFO_PATH + '.bak');
+    }
+    catch (error) {
+    }
+    finally {
+        fs.writeFileSync(SEIYUU_INFO_PATH, '');
+        process.exit();
+    }
+}
+let info;
+if (finfo == '') {
+    info = {};
+}
+else {
+    info = yaml_1.default.parse(finfo);
+}
+main(process.argv[2], process.argv[3]);

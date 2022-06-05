@@ -2,3 +2,5 @@ node_modules
 *.csv
 *.json
 *.js
+*.yaml
+*.py
