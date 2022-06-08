@@ -1,3 +1,4 @@
 node_modules
 *.csv
-*_bak*.yaml
+*.yaml
+!seiyuu-info.yaml
