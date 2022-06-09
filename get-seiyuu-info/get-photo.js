@@ -79,6 +79,9 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
     let info = yaml_1.default.parse(fs.readFileSync(SEIYUU_INFO_PATH, 'utf-8'));
     fs.open(SEIYUU_NEW_INFO_PATH, 'a+', (error, fd) => __awaiter(void 0, void 0, void 0, function* () {
         let scrapedPhoto = yaml_1.default.parse(fs.readFileSync(fd, 'utf-8'));
+        if (scrapedPhoto == null) {
+            scrapedPhoto = {};
+        }
         for (const key in info) {
             if (scrapedPhoto[key]) {
                 continue;

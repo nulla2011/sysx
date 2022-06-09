@@ -42,6 +42,9 @@ const main = async () => {
   let info = YAML.parse(fs.readFileSync(SEIYUU_INFO_PATH, 'utf-8'));
   fs.open(SEIYUU_NEW_INFO_PATH, 'a+', async (error, fd) => {
     let scrapedPhoto = YAML.parse(fs.readFileSync(fd, 'utf-8'));
+    if (scrapedPhoto == null) {
+      scrapedPhoto = {};
+    }
     for (const key in info) {
       if (scrapedPhoto[key]) {
         continue;
