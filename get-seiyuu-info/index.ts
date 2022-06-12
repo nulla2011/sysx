@@ -13,10 +13,8 @@ const MOEGIRL_API = new URL('https://zh.moegirl.org.cn/api.php');
 const SEIYUU_LIST = 'seiyuu-list_constrict1.csv';
 const SEIYUU_INFO = 'seiyuu-info.yaml';
 const SEIYUU_INFO_PATH = path.resolve(__dirname, '../', SEIYUU_INFO);
-interface Iparams {
-  [key: string]: string;
-}
-const params: Iparams = {
+
+const params: { [key: string]: string } = {
   action: 'query',
   format: 'json',
   prop: 'revisions',

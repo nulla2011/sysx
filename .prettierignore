@@ -4,3 +4,5 @@ node_modules
 *.js
 *.yaml
 *.py
+!pub.js
+*.json

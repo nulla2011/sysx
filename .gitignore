@@ -2,3 +2,6 @@ node_modules
 *.csv
 *.yaml
 !seiyuu-info.yaml
+*.js
+*.json
+!pub.js
