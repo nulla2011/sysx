@@ -3,5 +3,7 @@ node_modules
 *.yaml
 !seiyuu-info.yaml
 *.js
-*.json
 !pub.js
+seiyuu-info.json
+dist
+.vscode/
