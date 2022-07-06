@@ -1,12 +1,15 @@
 <template>
-  <input v-model="text" />
-  <div v-for="item in results">
-    <div class="py">{{ item.pysx }}</div>
-    <div class="zh-name">{{ item.zhName }}</div>
-    <img :src="item.photo" :alt="item.zhName" />
+  <div class="search">
+    <input v-model="text" />
+    <div class="container" v-for="item in results">
+      <div class="py">{{ item.pysx }}</div>
+      <div class="zh-name">{{ item.zhName }}</div>
+      <img :src="item.photo" :alt="item.zhName" />
+    </div>
   </div>
 </template>
 <script setup lang="ts">
+  import { searchWidth } from '../settings';
   import { Ref, ref, watch } from 'vue';
 
   interface seiyuu {
@@ -38,10 +41,32 @@
     border-radius: 6px;
     padding: 0.2em 1em;
     min-height: 50px;
+    min-width: v-bind(searchWidth);
     font-size: 1.6em;
     outline: none;
     /* font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
       Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; */
     font-weight: 400;
+  }
+  .container {
+    border: 1px #000;
+    min-height: 50px;
+    width: calc(350px + 2em);
+  }
+  img {
+    width: 50px;
+    position: relative;
+    left: 0;
+    top: 0;
+  }
+  .py {
+    left: 70px;
+  }
+  .zh-name {
+    left: 70px;
+  }
+  .search {
+    display: inline-block;
+    width: v-bind(searchWidth);
   }
 </style>
