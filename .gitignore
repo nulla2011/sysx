@@ -7,3 +7,4 @@ node_modules
 seiyuu-info.json
 dist
 .vscode/
+.pnpm-debug.log

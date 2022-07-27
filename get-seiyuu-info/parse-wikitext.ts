@@ -31,24 +31,25 @@ function sliceText(text: string, startReg: RegExp, endMark = '}') {
   }
   return text.slice(mStart.index! + mStart[0].length, end - (endMark == '}' ? 1 : 0)); //double curly brackets
 }
-function removeHeimu(text: string) {
-  return text.replace(/{{黑幕\|([^{}]*?)}}/g, '$1');
-}
-function removeRef(text: string) {
-  return text.replace(/<ref[^>]*?>.*?<\/ref>/g, '');
-}
-function removeDel(text: string) {
-  return text.replace(/<del>.*?<\/del>/g, '');
-}
-function removeInternalLink(text: string) {
-  return text.replace(/\[\[([^\[\]]*?)\]\]/g, '$1');
-}
-function removeSource(text: string) {
-  return text.replace(/{{来源请求\|([^{}]*?)}}/g, '');
-}
-function replaceLangJa(text: string) {
-  return text.replace(/{{lang\|ja\|/g, '{{lj|');
-}
+
+String.prototype.removeHeimu = function () {
+  return this.replace(/{{黑幕\|([^{}]*?)}}/g, '$1');
+};
+String.prototype.removeRef = function () {
+  return this.replace(/<ref[^>]*?>.*?<\/ref>/g, '');
+};
+String.prototype.removeDel = function () {
+  return this.replace(/<del>.*?<\/del>/g, '');
+};
+String.prototype.removeInternalLink = function () {
+  return this.replace(/\[\[([^\[\]]*?)\]\]/g, '$1');
+};
+String.prototype.removeSource = function () {
+  return this.replace(/{{来源请求\|([^{}]*?)}}/g, '');
+};
+String.prototype.replaceLangJa = function () {
+  return this.replace(/{{lang\|ja\|/g, '{{lj|');
+};
 
 function getSeiyuInfoTemplate(text: string) {
   return sliceText(text, /{{声优信息/);
@@ -70,7 +71,7 @@ function getName(templateText: string) {
     return nameString.replace(/\|姓名=([^{}]*?)\|/, '$1');
   }
   let name = [];
-  nameString = replaceLangJa(removeHeimu(nameString));
+  nameString = nameString.removeHeimu().replaceLangJa();
   let mJpn =
     nameString.match(/{{jpn\|([^{}]*?)}}/i) ??
     nameString.match(/{{日本人名\|([^{}]*?)}}/); //jpn=日本人名，这种模板应该只有一个吧？
@@ -114,23 +115,24 @@ function getName(templateText: string) {
   });
 }
 function getBirth(templateText: string) {
-  return removeSource(
-    removeDel(
-      removeRef(
-        removeHeimu(
-          sliceText(templateText, /\|生日=/, '|') ??
-            sliceText(templateText, /\|出生=/, '|')!
-        )
-      )
-    )
-  );
+  return (
+    sliceText(templateText, /\|生日=/, '|') ?? sliceText(templateText, /\|出生=/, '|')!
+  )
+    .removeHeimu()
+    .removeRef()
+    .removeDel()
+    .removeSource();
 }
 function getJimusho(templateText: string) {
   let jimushoString = sliceText(templateText, /\|所属(公司|情况)\s*=/, '|')?.trim();
   if (jimushoString == null) {
     return null;
   }
-  jimushoString = removeDel(removeRef(removeHeimu(removeInternalLink(jimushoString))));
+  jimushoString = jimushoString
+    .removeInternalLink()
+    .removeHeimu()
+    .removeRef()
+    .removeDel();
   let list = jimushoString.split(/、|<br ?\/?>|\n/);
   if (list.length == 1) {
     return jimushoString.replace(/(\(|（).*?事务所(\)|）)/, '');

@@ -2,9 +2,9 @@
   <div class="search">
     <input v-model="text" />
     <div class="container" v-for="item in results">
+      <img :src="item.photo" :alt="item.zhName" />
       <div class="py">{{ item.pysx }}</div>
       <div class="zh-name">{{ item.zhName }}</div>
-      <img :src="item.photo" :alt="item.zhName" />
     </div>
   </div>
 </template>
@@ -41,7 +41,7 @@
     border-radius: 6px;
     padding: 0.2em 1em;
     min-height: 50px;
-    min-width: v-bind(searchWidth);
+    min-width: 350px;
     font-size: 1.6em;
     outline: none;
     /* font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
@@ -66,7 +66,7 @@
     left: 70px;
   }
   .search {
-    display: inline-block;
-    width: v-bind(searchWidth);
+    display: flex;
+    width: 350px;
   }
 </style>
