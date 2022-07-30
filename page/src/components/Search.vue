@@ -1,10 +1,12 @@
 <template>
   <div class="search">
-    <input v-model="text" />
+    <div class="bar"><input v-model="text" /></div>
     <div class="container" v-for="item in results">
-      <img :src="item.photo" :alt="item.zhName" />
-      <div class="py">{{ item.pysx }}</div>
-      <div class="zh-name">{{ item.zhName }}</div>
+      <div class="img"><img :src="item.photo" :alt="item.zhName" /></div>
+      <div class="text">
+        <div class="zh-name">{{ item.zhName }}</div>
+        <div class="py">{{ item.pysx }}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -35,38 +37,79 @@
     }
   });
 </script>
-<style>
-  input {
-    border: 2px solid #1092e1;
-    border-radius: 6px;
-    padding: 0.2em 1em;
-    min-height: 50px;
-    min-width: 350px;
-    font-size: 1.6em;
-    outline: none;
-    /* font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; */
-    font-weight: 400;
-  }
-  .container {
-    border: 1px #000;
-    min-height: 50px;
-    width: calc(350px + 2em);
-  }
-  img {
-    width: 50px;
-    position: relative;
-    left: 0;
-    top: 0;
-  }
-  .py {
-    left: 70px;
-  }
-  .zh-name {
-    left: 70px;
-  }
+<style lang="scss">
+  $height: 70px;
+  $width: 400px;
   .search {
-    display: flex;
-    width: 350px;
+    margin: auto;
+    width: $width;
+    background-color: white;
+    box-shadow: 0 0 5px #777;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .bar {
+    // padding: 5px 10px;
+    background-color: #f8f8f8;
+    input {
+      border: 2px solid #777;
+      &:focus {
+        border-color: #4eafeb;
+      }
+      box-sizing: border-box;
+      border-radius: 6px;
+      padding: 0.2em 0.75em;
+      height: 50px;
+      width: 100%;
+      font-size: 1.6em;
+      outline: none;
+      /* font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; */
+      font-weight: 400;
+    }
+  }
+
+  .container {
+    &:hover {
+      background-color: #9bceee;
+    }
+    border-bottom: 0.01px solid #999;
+    height: $height;
+    width: 100%;
+    padding: 5px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  .img {
+    // margin: 5px;
+    display: inline-block;
+    width: $height - 10px;
+    height: $height - 10px;
+    img {
+      width: $height - 10px;
+      height: $height - 10px;
+      object-fit: cover;
+      // box-shadow: 0 0 3px #333;
+    }
+  }
+  .text {
+    margin-left: 15px;
+    height: $height - 6px;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    .zh-name {
+      font-size: 22px;
+      height: $height * 0.5;
+      color: #2c3d4e;
+    }
+    .py {
+      font-size: 16px;
+      color: #777;
+      height: $height * 0.5 - 6px;
+    }
   }
 </style>
