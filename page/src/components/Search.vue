@@ -2,7 +2,7 @@
   <div class="search">
     <div class="bar"><input v-model="text" /></div>
     <div class="container" v-for="item in results">
-      <div class="img"><img :src="item.photo" :alt="item.zhName" /></div>
+      <div class="img"><img v-lazy="item.photo ?? img_404" :alt="item.zhName" /></div>
       <div class="text">
         <div class="zh-name">{{ item.zhName }}</div>
         <div class="py">{{ item.pysx }}</div>
@@ -13,6 +13,7 @@
 <script setup lang="ts">
   import { searchWidth } from '../settings';
   import { Ref, ref, watch } from 'vue';
+  import img_404 from '../assets/no-image-icon-23485.png';
 
   interface seiyuu {
     zhName: string;

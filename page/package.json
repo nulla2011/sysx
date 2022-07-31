@@ -8,7 +8,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.2.37"
+    "vue": "^3.2.37",
+    "vue-lazyload": "3.0.0-rc.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",
