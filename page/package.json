@@ -8,10 +8,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "lodash": "^4.17.21",
     "vue": "^3.2.37",
     "vue-lazyload": "3.0.0-rc.2"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.182",
     "@vitejs/plugin-vue": "^2.3.3",
     "sass": "^1.54.0",
     "typescript": "^4.7.4",

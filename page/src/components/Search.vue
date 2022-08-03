@@ -1,6 +1,6 @@
 <template>
   <div class="search">
-    <div class="bar"><input v-model="text" /></div>
+    <div class="bar"><input v-model="text" @focus="mountThis" /></div>
     <div class="container" v-for="item in results">
       <div class="img"><img v-lazy="item.photo ?? img_404" :alt="item.zhName" /></div>
       <div class="text">
@@ -10,21 +10,36 @@
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
   import { searchWidth } from '../settings';
   import { Ref, ref, watch } from 'vue';
   import img_404 from '../assets/no-image-icon-23485.png';
+  import { debounce } from 'lodash';
 
   interface seiyuu {
     zhName: string;
     pysx: string | null;
     jaName: string[][] | string;
-    photo: string;
+    photo: string | null;
   }
+
   let text = ref('');
   let results: Ref<seiyuu[]> = ref([]);
   let props = defineProps({ fulldata: Object });
-  watch(text, () => {
+  let isMounted = false;
+  const mountThis = () => {
+    isMounted = true;
+    console.log(isMounted);
+  };
+  const handleClick = (ev: MouseEvent) => {
+    if (!document.querySelector('.bar')!.contains(ev.target as HTMLElement)) {
+      console.log('1111');
+      isMounted = false;
+    }
+  };
+  document.addEventListener('click', handleClick);
+  let inputDebounce = debounce(() => {
     results.value = [];
     if (text.value.length > 1) {
       for (const key in props.fulldata) {
@@ -36,8 +51,10 @@
         }
       }
     }
-  });
+  }, 400);
+  watch(text, () => inputDebounce());
 </script>
+
 <style lang="scss">
   $height: 70px;
   $width: 400px;
@@ -71,6 +88,7 @@
   }
 
   .container {
+    background-color: #eee;
     &:hover {
       background-color: #9bceee;
     }
