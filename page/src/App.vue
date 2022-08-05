@@ -8,10 +8,13 @@
         response.json()
       ))
   );
+  const ttt = (n: string) => {
+    console.log(n);
+  };
 </script>
 
 <template>
-  <Search :fulldata="seiyuuData"></Search>
+  <Search :fulldata="seiyuuData" @selected="ttt"></Search>
 </template>
 
 <style>

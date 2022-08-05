@@ -1,11 +1,17 @@
 <template>
   <div class="search">
-    <div class="bar"><input v-model="text" @focus="mountThis" /></div>
-    <div class="container" v-for="item in results">
-      <div class="img"><img v-lazy="item.photo ?? img_404" :alt="item.zhName" /></div>
-      <div class="text">
-        <div class="zh-name">{{ item.zhName }}</div>
-        <div class="py">{{ item.pysx }}</div>
+    <div class="bar"><input v-model="text" @click="loadThis" @focus="loadThis" /></div>
+    <div class="list" v-if="isLoaded">
+      <div
+        class="container"
+        v-for="item in results"
+        @click="$emit('selected', item.zhName)"
+      >
+        <div class="img"><img v-lazy="item.photo ?? img_404" :alt="item.zhName" /></div>
+        <div class="text">
+          <div class="zh-name">{{ item.zhName }}</div>
+          <div class="py">{{ item.pysx }}</div>
+        </div>
       </div>
     </div>
   </div>
@@ -27,17 +33,24 @@
   let text = ref('');
   let results: Ref<seiyuu[]> = ref([]);
   let props = defineProps({ fulldata: Object });
-  let isMounted = false;
-  const mountThis = () => {
-    isMounted = true;
-    console.log(isMounted);
+  let isLoaded: Ref<boolean> = ref(false);
+  const loadThis = () => {
+    isLoaded.value = true;
   };
   const handleClick = (ev: MouseEvent) => {
     if (!document.querySelector('.bar')!.contains(ev.target as HTMLElement)) {
-      console.log('1111');
-      isMounted = false;
+      isLoaded.value = false;
     }
   };
+  watch(isLoaded, (value) => {
+    if (value) {
+      (document.querySelector('.search') as HTMLElement)!.style['boxShadow'] =
+        '0 0 12px #555';
+    } else {
+      (document.querySelector('.search') as HTMLElement)!.style['boxShadow'] =
+        '0 0 4px #888';
+    }
+  });
   document.addEventListener('click', handleClick);
   let inputDebounce = debounce(() => {
     results.value = [];
@@ -58,6 +71,7 @@
 <style lang="scss">
   $height: 70px;
   $width: 400px;
+  $bg: #f2f2f2;
   .search {
     margin: auto;
     width: $width;
@@ -68,7 +82,8 @@
   }
   .bar {
     // padding: 5px 10px;
-    background-color: #f8f8f8;
+    // background-color: #f8f8f8;
+    background-color: $bg;
     input {
       border: 2px solid #777;
       &:focus {
@@ -88,9 +103,9 @@
   }
 
   .container {
-    background-color: #eee;
+    background-color: $bg;
     &:hover {
-      background-color: #9bceee;
+      background-color: #aed4ec;
     }
     border-bottom: 0.01px solid #999;
     height: $height;
