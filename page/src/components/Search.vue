@@ -10,7 +10,11 @@
         <div class="img"><img v-lazy="item.photo ?? img_404" :alt="item.zhName" /></div>
         <div class="text">
           <div class="zh-name">{{ item.zhName }}</div>
-          <div class="py">{{ item.pysx }}</div>
+          <div class="py">
+            <!-- <span class="highlight">{{ text }}</span
+            >{{ item.pysx?.slice(text.length) }} -->
+            {{ item.pysx }}
+          </div>
         </div>
       </div>
     </div>
@@ -43,12 +47,12 @@
     }
   };
   watch(isLoaded, (value) => {
+    let searchEl: HTMLElement = document.querySelector('.search')!;
+    let inputEL: HTMLElement = document.querySelector('input')!;
     if (value) {
-      (document.querySelector('.search') as HTMLElement)!.style['boxShadow'] =
-        '0 0 12px #555';
+      searchEl.style['boxShadow'] = '0 0 12px #555';
     } else {
-      (document.querySelector('.search') as HTMLElement)!.style['boxShadow'] =
-        '0 0 4px #888';
+      searchEl.style['boxShadow'] = '0 0 4px #888';
     }
   });
   document.addEventListener('click', handleClick);
@@ -64,13 +68,16 @@
         }
       }
     }
+    isLoaded.value = true;
   }, 400);
-  watch(text, () => inputDebounce());
+  watch(text, () => {
+    inputDebounce();
+  });
 </script>
 
 <style lang="scss">
   $height: 70px;
-  $width: 400px;
+  $width: 300px;
   $bg: #f2f2f2;
   .search {
     margin: auto;
@@ -91,17 +98,17 @@
       }
       box-sizing: border-box;
       border-radius: 6px;
-      padding: 0.2em 0.75em;
+      padding: 0.2em 0.9em;
       height: 50px;
       width: 100%;
       font-size: 1.6em;
       outline: none;
+      font-family: Nunito, sans-serif;
       /* font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
       Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; */
-      font-weight: 400;
+      font-weight: 500;
     }
   }
-
   .container {
     background-color: $bg;
     &:hover {
@@ -113,6 +120,7 @@
     padding: 5px;
     padding-left: 10px;
     box-sizing: border-box;
+    cursor: pointer;
     &:last-child {
       border-bottom: none;
     }
@@ -122,6 +130,8 @@
     display: inline-block;
     width: $height - 10px;
     height: $height - 10px;
+    overflow: hidden;
+    border-radius: 5px;
     img {
       width: $height - 10px;
       height: $height - 10px;
@@ -145,5 +155,8 @@
       color: #777;
       height: $height * 0.5 - 6px;
     }
+  }
+  .highlight {
+    color: #333;
   }
 </style>
