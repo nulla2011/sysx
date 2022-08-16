@@ -27,13 +27,6 @@
   import img_404 from '../assets/no-image-icon-23485.png';
   import { debounce } from 'lodash';
 
-  interface seiyuu {
-    zhName: string;
-    pysx: string | null;
-    jaName: string[][] | string;
-    photo: string | null;
-  }
-
   let text = ref('');
   let results: Ref<seiyuu[]> = ref([]);
   let props = defineProps({ fulldata: Object });

@@ -1,15 +1,17 @@
 <script setup lang="ts">
   import { onMounted, ref, Ref } from 'vue';
   import Search from './components/Search.vue';
-  let seiyuuData = ref({});
+  import Show from './components/Show.vue';
+  let seiyuuData: Ref<{ [key: string]: seiyuu }> = ref({});
+  let name = ref('');
   onMounted(
     async () =>
       (seiyuuData.value = await fetch('/seiyuu-info.json').then((response) =>
         response.json()
       ))
   );
-  const ttt = (n: string) => {
-    console.log(n);
+  const processSelect = (n: string) => {
+    name.value = n;
   };
 </script>
 
@@ -21,7 +23,10 @@
       ></ruby
     >
   </h1>
-  <Search :fulldata="seiyuuData" @selected="ttt"></Search>
+  <Search :fulldata="seiyuuData" @selected="processSelect"></Search>
+  <Show
+    ><template #zhName>{{ seiyuuData[name].zhName }}</template></Show
+  >
 </template>
 
 <style lang="scss">
