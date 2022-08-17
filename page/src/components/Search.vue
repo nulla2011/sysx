@@ -85,6 +85,7 @@
     // background-color: #f8f8f8;
     background-color: $bg;
     input {
+      background-color: #fff;
       border: 2px solid #777;
       &:focus {
         border-color: #4eafeb;

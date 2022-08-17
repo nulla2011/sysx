@@ -6,8 +6,8 @@ import path from 'path';
 import * as fs from 'fs';
 
 const searchUrl = 'https://seigura.com/?post_type=directory&s=';
-const SEIYUU_INFO_PATH = path.resolve(__dirname, '../', 'seiyuu-info.yaml');
-const SEIYUU_NEW_INFO_PATH = path.resolve(__dirname, '../', 'seiyuu-info_new.yaml');
+const SEIYUU_INFO_PATH = path.resolve(__dirname, '../', 'seiyuu-info.yaml.bak');
+const SEIYUU_NEW_INFO_PATH = path.resolve(__dirname, '../', 'seiyuu-info.yaml');
 
 const getPhoto = async (name: string) => {
   let response: AxiosResponse;

@@ -3,8 +3,9 @@ node_modules
 *.yaml
 !seiyuu-info.yaml
 *.js
-!pub.js
+!publish.js
 seiyuu-info.json
 dist
 .vscode/
 .pnpm-debug.log
+*.bak

@@ -23,10 +23,13 @@
       ></ruby
     >
   </h1>
-  <Search :fulldata="seiyuuData" @selected="processSelect"></Search>
-  <Show
-    ><template #zhName>{{ seiyuuData[name].zhName }}</template></Show
-  >
+  <Search id="search" :fulldata="seiyuuData" @selected="processSelect"></Search>
+  <Show id="show">
+    <template v-if="seiyuuData[name]?.photo" #photo>
+      <img v-lazy="seiyuuData[name]?.photo" />
+    </template>
+    <template #zhName>{{ seiyuuData[name]?.zhName }}</template>
+  </Show>
 </template>
 
 <style lang="scss">
@@ -48,5 +51,24 @@
   .title {
     text-align: center;
     font-weight: 500;
+    font-size: 35px;
+    letter-spacing: 0.18em;
+    rt {
+      font-size: 20px;
+    }
+    color: #1a2b3c;
+  }
+  #search {
+    position: relative;
+    top: 50px;
+  }
+  #show {
+    position: absolute;
+    top: 320px;
+    left: 0;
+    right: 0;
+    width: 500px;
+    margin-left: calc(100vw - 100% + (100% - (100vw - 100%) - 500px) / 2);
+    z-index: -2;
   }
 </style>
