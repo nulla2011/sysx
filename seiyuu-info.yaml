@@ -4072,7 +4072,7 @@ Machico:
   jimusho: 81 Produce
   profile: https://www.81produce.co.jp/actor_search/index.php/item?id=312
   twitter: https://twitter.com/miyamiya_Satsu
-  instagram: null
+  instagram: https://www.instagram.com/miyamiya_satsu/
   blog: null
   check: false
   photo: https://seigura.com/wp-content/uploads/2022/04/8c326e74f08ce6d77ceed769d70d06c7.jpg
@@ -7663,8 +7663,8 @@ Payton尚未:
     - - 麻妃
       - まき
   birth: 2002年3月16日
-  jimusho: null
-  profile: null
+  jimusho: Style Cube
+  profile: http://stylecube.jp/talents/maki/index.html
   twitter: https://twitter.com/h_maki_official
   instagram: null
   blog: null
@@ -11045,3 +11045,32 @@ mika:
   blog: null
   check: true
   photo: https://seigura.com/wp-content/uploads/2020/06/51393f81592b8e5d6e40e718f4b54042.jpg
+稻垣好:
+  pysx: dyh
+  jaName:
+    - - 稲垣
+      - いながき
+    - - 好
+      - このみ
+  birth: 7月24日
+  jimusho: I'm Enterprise
+  profile: https://www.imenterprise.jp/profile.php?id=148
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+青木志贵:
+  pysx: qmzg
+  jaName:
+    - - 青木
+      - あおき
+    - - 志貴
+      - しき
+  birth: 1990年1月14日
+  jimusho: 三木Production
+  profile: https://www.mikipro.co.jp/talent/tarent_profile/aokishiki.html
+  twitter: https://twitter.com/eerie_eery
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2022/03/6533475b3d1bd111d044aa07bdf05136.jpg

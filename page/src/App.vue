@@ -1,9 +1,24 @@
 <script setup lang="ts">
-  import { onMounted, ref, Ref } from 'vue';
+  import { computed, onMounted, ref, Ref } from 'vue';
   import Search from './components/Search.vue';
   import Show from './components/Show.vue';
   let seiyuuData: Ref<{ [key: string]: seiyuu }> = ref({});
-  let name = ref('');
+  let name: Ref<string> = ref('');
+  let seiyuu = computed(() => {
+    return seiyuuData.value?.[name.value];
+  });
+  let nameHTML = computed(() => {
+    let jaName = seiyuu.value.jaName;
+    if (Array.isArray(jaName)) {
+      let ruby = jaName.reduce(
+        (p, c) => (p = p + c[0] + '<rt>' + (c[1] ?? '') + '</rt>' + '<span></span>'),
+        ''
+      );
+      return '<ruby>' + ruby + '</ruby>';
+    } else {
+      return jaName;
+    }
+  });
   onMounted(
     async () =>
       (seiyuuData.value = await fetch('/seiyuu-info.json').then((response) =>
@@ -24,11 +39,44 @@
     >
   </h1>
   <Search id="search" :fulldata="seiyuuData" @selected="processSelect"></Search>
-  <Show id="show">
-    <template v-if="seiyuuData[name]?.photo" #photo>
-      <img v-lazy="seiyuuData[name]?.photo" />
+  <Show id="show" v-if="name">
+    <template v-if="seiyuu?.photo" #photo>
+      <div id="photo"><img v-lazy="seiyuu?.photo" /></div>
     </template>
-    <template #zhName>{{ seiyuuData[name]?.zhName }}</template>
+    <template #zhName>
+      {{ seiyuu?.zhName }}
+    </template>
+    <template #jaName>
+      <div v-if="Array.isArray(seiyuu?.jaName)">
+        <ruby v-for="n in seiyuu?.jaName">
+          <rb>{{ n[0] }}</rb>
+          <rt>{{ n[1] ?? '' }}</rt>
+        </ruby>
+      </div>
+      <div v-else>{{ seiyuu?.jaName }}</div>
+    </template>
+    <template #birth>
+      {{ seiyuu?.birth }}
+    </template>
+    <template #jimusho>
+      {{ seiyuu?.jimusho ?? '无' }}
+    </template>
+    <template #profile>
+      <a class="links" v-if="seiyuu?.profile" :href="seiyuu?.profile" target="_blank"
+        >profile<font-awesome-icon icon="fa-solid fa-up-right-from-square"
+      /></a>
+      <a class="links" v-if="seiyuu?.twitter" :href="seiyuu?.twitter" target="_blank"
+        ><font-awesome-icon icon="fa-brands fa-twitter" />Twitter<font-awesome-icon
+          icon="fa-solid fa-up-right-from-square"
+      /></a>
+      <a class="links" v-if="seiyuu?.instagram" :href="seiyuu?.instagram" target="_blank"
+        ><font-awesome-icon icon="fa-brands fa-instagram" />Instagram<font-awesome-icon
+          icon="fa-solid fa-up-right-from-square"
+      /></a>
+      <a class="links" v-if="seiyuu?.blog" :href="seiyuu?.blog" target="_blank"
+        >blog<font-awesome-icon icon="fa-solid fa-up-right-from-square"
+      /></a>
+    </template>
   </Show>
 </template>
 
@@ -36,7 +84,6 @@
   @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500&display=swap');
   // @import url('https://fonts.font.im/css?family=Nunito:200,300,400,600');
   #app {
-    // font-family: Avenir, Helvetica, Arial, sans-serif;
     font-family: Nunito, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -46,17 +93,17 @@
     margin-left: calc(100vw - 100%);
   }
   body {
-    background-color: #eee;
+    background-color: #f6f7f8;
   }
   .title {
     text-align: center;
     font-weight: 500;
     font-size: 35px;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.12em;
+    color: #1a2b3c;
     rt {
       font-size: 20px;
     }
-    color: #1a2b3c;
   }
   #search {
     position: relative;
@@ -65,10 +112,45 @@
   #show {
     position: absolute;
     top: 320px;
-    left: 0;
+    // left: 0;
     right: 0;
-    width: 500px;
-    margin-left: calc(100vw - 100% + (100% - (100vw - 100%) - 500px) / 2);
     z-index: -2;
+    #photo {
+      width: 200px;
+      flex: 1 1 200px;
+      display: flex;
+      margin: 0 20px;
+      margin-bottom: 45px;
+      img {
+        max-width: 250px;
+        min-width: 200px;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+      }
+    }
+    rt {
+      line-height: normal;
+      font-size: 15px;
+      letter-spacing: -0.1em;
+    }
+    rb {
+      font-size: 18px;
+    }
+    .links {
+      color: #3351b7;
+      width: 180px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      line-height: 2em;
+      &:visited {
+        color: #632157;
+      }
+      [data-icon='fa-up-right-from-square'] {
+        position: relative;
+        left: 3px;
+      }
+    }
   }
 </style>

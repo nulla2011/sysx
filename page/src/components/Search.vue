@@ -1,13 +1,18 @@
 <template>
   <div class="search">
     <div class="bar"><input v-model="text" @click="loadThis" @focus="loadThis" /></div>
-    <div class="list" v-if="isLoaded">
+    <div class="list" v-show="isLoaded">
       <div
         class="container"
         v-for="item in results"
         @click="$emit('selected', item.zhName)"
       >
-        <div class="img"><img v-lazy="item.photo ?? img_404" :alt="item.zhName" /></div>
+        <div class="img" v-if="item.photo">
+          <img v-lazy="item.photo" :alt="item.zhName" />
+        </div>
+        <div class="img" v-else>
+          <img :src="img_404" style="object-fit: cover; size: 50px" />
+        </div>
         <div class="text">
           <div class="zh-name">{{ item.zhName }}</div>
           <div class="py">
@@ -72,13 +77,15 @@
   $height: 70px;
   $width: 300px;
   $bg: #f2f2f2;
+  $transition: all 0.3s ease-out;
   .search {
-    margin: auto;
+    margin: 0 auto;
     width: $width;
     background-color: white;
     box-shadow: 0 0 5px #777;
     border-radius: 6px;
     overflow: hidden;
+    transition: $transition;
   }
   .bar {
     // padding: 5px 10px;
@@ -89,6 +96,7 @@
       border: 2px solid #777;
       &:focus {
         border-color: #4eafeb;
+        transition: $transition;
       }
       box-sizing: border-box;
       border-radius: 6px;
@@ -136,7 +144,6 @@
   .text {
     margin-left: 15px;
     height: $height - 6px;
-    position: relative;
     display: inline-block;
     vertical-align: top;
     .zh-name {
@@ -145,7 +152,9 @@
       color: #2c3d4e;
     }
     .py {
-      font-size: 16px;
+      position: relative;
+      top: -5px;
+      font-size: 18px;
       color: #777;
       height: $height * 0.5 - 6px;
     }
