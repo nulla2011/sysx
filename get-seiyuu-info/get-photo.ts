@@ -46,7 +46,7 @@ const main = async () => {
       scrapedPhoto = {};
     }
     for (const key in info) {
-      if (scrapedPhoto[key]) {
+      if (scrapedPhoto[key].hasOwnProperty('photo')) {
         continue;
       }
       let name = info[key].jaName;

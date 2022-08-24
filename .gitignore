@@ -9,3 +9,4 @@ dist
 .vscode/
 .pnpm-debug.log
 *.bak
+note.md

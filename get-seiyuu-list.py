@@ -18,6 +18,9 @@ if __name__ == "__main__":
     seiyuuList = []
     session = HTMLSession()
     r = session.get(SEIYUU_URL)
+    nameList60 = r.html.find(
+        ".navbox .nowraplinks.mw-collapsible tr:nth-child(9) .nowraplinks.mw-collapsible .navbox-list p:nth-child(1) a"
+    )
     nameList70 = r.html.find(
         ".navbox .nowraplinks.mw-collapsible tr:nth-child(11) .nowraplinks.mw-collapsible .navbox-list p:nth-child(1) a"
     )
@@ -33,7 +36,7 @@ if __name__ == "__main__":
     nameListNu = r.html.find(
         ".navbox .nowraplinks.mw-collapsible tr:nth-child(21) .nowraplinks.mw-collapsible .navbox-list p:nth-child(1) a"
     )
-    for name in [*nameList70, *nameList80, *nameList90, *nameList00, *nameListNu]:
+    for name in [*nameList60, *nameList70, *nameList80, *nameList90, *nameList00, *nameListNu]:
         #if not hasLettersAndDot(name.text):  #去掉含英文的名字和带点的外文名字
         if not (name.attrs.get('class')):  #去掉没页面的
             seiyuuList.append([name.text, (list(name.absolute_links))[0]])

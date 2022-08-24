@@ -11045,20 +11045,6 @@ mika:
   blog: null
   check: true
   photo: https://seigura.com/wp-content/uploads/2020/06/51393f81592b8e5d6e40e718f4b54042.jpg
-稻垣好:
-  pysx: dyh
-  jaName:
-    - - 稲垣
-      - いながき
-    - - 好
-      - このみ
-  birth: 7月24日
-  jimusho: I'm Enterprise
-  profile: https://www.imenterprise.jp/profile.php?id=148
-  twitter: null
-  instagram: null
-  blog: null
-  check: false
 青木志贵:
   pysx: qmzg
   jaName:
@@ -11074,3 +11060,301 @@ mika:
   blog: null
   check: false
   photo: https://seigura.com/wp-content/uploads/2022/03/6533475b3d1bd111d044aa07bdf05136.jpg
+稻垣好:
+  pysx: dyh
+  jaName:
+    - - 稲垣
+      - いながき
+    - - 好
+      - このみ
+  birth: 7月24日
+  jimusho: I'm Enterprise
+  profile: https://www.imenterprise.jp/profile.php?id=148
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+佐藤梓:
+  pysx: ztz
+  jaName:
+    - - 佐藤
+      - さとう
+    - - あずさ
+      - null
+  birth: 1990年1月8日
+  jimusho: Mausu Promotion
+  profile: https://mausu.net/talent/sato-azusa.html
+  twitter: https://twitter.com/azu_sa_to
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+结那:
+  pysx: jn
+  jaName:
+    - - 結那
+      - ゆいな
+  birth: 2001年9月27日
+  jimusho: 放映新社
+  profile: https://www.houeishinsha.co.jp/h_detail_sptalent.cgi?OFFICE=T&KIND=1&ID=624673fc_1856
+  twitter: https://twitter.com/0927_yuina
+  instagram: https://www.instagram.com/yuina_927/
+  blog: null
+  check: true
+  photo: null
+真野美月:
+  pysx: zymy
+  jaName:
+    - - 真野
+      - まの
+    - - 美月
+      - みづき
+  birth: 1月11日
+  jimusho: 尾木Pro THE NEXT
+  profile: https://www.oginext.com/women/mano.html
+  twitter: https://twitter.com/mano_miduki_
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+森下来奈:
+  pysx: sxln
+  jaName:
+    - - 森下
+      - もりした
+    - - 来奈
+      - らな
+  birth: 1993年10月14日
+  jimusho: 東京俳優生活協同組合
+  profile: https://haikyo.co.jp/profile/profile.php?ActorID=12568
+  twitter: https://twitter.com/rana_morishita
+  instagram: null
+  blog: https://ameblo.jp/rana-1014-skyblue
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2020/06/73a8b73af593b3748311fcaaf1730224-1.jpg
+大谷育江:
+  pysx: dgyj
+  jaName:
+    - - 大谷
+      - おおたに
+    - - 育江
+      - いくえ
+  birth: 1965年8月18日
+  jimusho: Mausu Promotion
+  profile: https://mausu.net/talent/otani-ikue.html
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2020/06/ac6f99e09c2235dfb5fc2d8e556db9f6.jpg
+渡边美佐:
+  pysx: dbmz
+  jaName:
+    - - 渡辺
+      - わたなべ
+    - - 美佐
+      - みさ
+  birth: 1964年4月30日
+  jimusho: 青二Production
+  profile: https://www.aoni.co.jp/search/watanabe-misa.html
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2022/04/83c90cb792f5f16685eb8c083fac1c1c.jpg
+高山南:
+  pysx: gsn
+  jaName:
+    - - 高山
+      - たかやま
+    - - みなみ
+      - null
+  birth: 1964年5月5日
+  jimusho: 81 Produce
+  profile: https://www.81produce.co.jp/actor_search/index.php/item?id=237
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2018/10/abb3f7bd294643cc9052158f51e005d8.jpg
+国府田麻理子:
+  pysx: gftmlz
+  jaName:
+    - - 國府田
+      - こうだ
+    - - マリ子
+      - マリこ
+  birth: 1969年9月5日
+  jimusho: 青二Production
+  profile: http://www.aoni.co.jp/actress/ka/kouda-mariko.html
+  twitter: https://twitter.com/happy3_office
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2022/04/ef38cd2519011b38a7d70829fddb5ee4.jpg
+皆口裕子:
+  pysx: jkyz
+  jaName:
+    - - 皆口
+      - みなぐち
+    - - 裕子
+      - ゆうこ
+  birth: 1966年6月26日
+  jimusho: 青二Production
+  profile: http://www.aoni.co.jp/actress/ma/minaguchi-yuko.html
+  twitter: https://twitter.com/minaguchiyuko
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2020/06/546c0b8838b7fa91805d3f2bdc4240c3.jpg
+井上喜久子:
+  pysx: jsxjz
+  jaName:
+    - - 井上
+      - いのうえ
+    - - 喜久子
+      - きくこ
+  birth: 1964年9月25日
+  jimusho: Office Anemone
+  profile: https://www.office-anemone.com/?page_id=2733
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2020/03/870541c71dc1386ffa6a46fac2aa97f3-320x480.jpg
+林原惠:
+  pysx: lyh
+  jaName:
+    - - 林原
+      - はやしばら
+    - - めぐみ
+      - null
+  birth: 1967年3月30日
+  jimusho: Wood Park Office
+  profile: null
+  twitter: null
+  instagram: null
+  blog: null
+  check: true
+  photo: https://seigura.com/wp-content/uploads/2020/06/aab726223119d5dd3ce5a91dba3672dc.jpg
+三石琴乃:
+  pysx: ssqn
+  jaName:
+    - - 三石
+      - みついし
+    - - 琴乃
+      - ことの
+  birth: 1967年12月8日
+  jimusho: 无
+  profile: null
+  twitter: null
+  instagram: null
+  blog: null
+  check: true
+  photo: https://seigura.com/wp-content/uploads/2018/10/15943cfa9f30d7a304d8454d99856c3a.jpg
+松本梨香:
+  pysx: sblx
+  jaName:
+    - - 松本
+      - まつもと
+    - - 梨香
+      - りか
+  birth: 1968年11月10日
+  jimusho: Matsurica
+  profile: https://www.matsurica.xyz/rica-matsumoto-00
+  twitter: null
+  instagram: null
+  blog: https://ameblo.jp/ricachanhouse/
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2020/06/d2b92b0cf77dbfbc9959d28b7ea4648f.jpg
+田中敦子:
+  pysx: tzdz
+  jaName:
+    - - 田中
+      - たなか
+    - - 敦子
+      - あつこ
+  birth: 1962年11月14日
+  jimusho: Mausu Promotion
+  profile: https://mausu.net/talent/tanaka-atsuko.html
+  twitter: https://twitter.com/atuwosyousa
+  instagram: null
+  blog: https://cafe-centralpark.at.webry.info/
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2018/10/10527e0c5d4c24c0cf920a3cc418c25b.jpg
+内村史子:
+  pysx: ncsz
+  jaName:
+    - - 内村
+      - うちむら
+    - - 史子
+      - ふみこ
+  birth: 12月16日
+  jimusho: VIMS
+  profile: http://www.vims.co.jp/talent_profile_detail.php?id=24
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2020/06/a4f28ea751044d582f3f1707d931b8f4.jpg
+小野凉子:
+  pysx: xylz
+  jaName:
+    - - 小野
+      - おの
+    - - 涼子
+      - りょうこ
+  birth: 1977年6月22日
+  jimusho: 无
+  profile: null
+  twitter: https://twitter.com/ono_ryoko
+  instagram: null
+  blog: null
+  check: true
+  photo: https://seigura.com/wp-content/uploads/2020/06/393740a5ef6d256effa62e0d143d59dc.jpg
+寺崎裕香:
+  pysx: sqyx
+  jaName:
+    - - 寺崎
+      - てらさき
+    - - 裕香
+      - ゆか
+  birth: 1983年8月4日
+  jimusho: 贤Production
+  profile: https://www.kenproduction.co.jp/talent/232
+  twitter: https://twitter.com/terachan0804
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2018/10/2d3f4dac1e75642e7a935a5186a1eeef.png
+松来未祐:
+  pysx: slwy
+  jaName:
+    - - 松来
+      - まつき
+    - - 未祐
+      - みゆ
+  birth: 1977年9月14日
+  jimusho: 81 Produce
+  profile: https://www.81produce.co.jp/actor_search/index.php/item?cell003=%E3%83%A1%E3%83%A2%E3%83%AA%E3%82%A2%E3%83%AB&cell029=%E5%A5%B3%E6%80%A7&keyword=%E6%9D%BE%E6%9D%A5&cell028=&cell004=&name=%E6%9D%BE%E6%9D%A5%E3%80%80%E6%9C%AA%E7%A5%90&id=347&label=1
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+芳野由奈:
+  pysx: fyyn
+  jaName:
+    - - 芳野
+      - よしの
+    - - 由奈
+      - ゆな
+  birth: 7月5日
+  jimusho: ULTRA EGG
+  profile: https://ultraeggs.jp/talent_info/yoshino_yuna/
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: null
