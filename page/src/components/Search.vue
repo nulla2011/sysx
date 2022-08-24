@@ -24,6 +24,7 @@
       </div>
     </div>
   </div>
+  <div class="warning" v-if="warning">{{ warning }}</div>
 </template>
 
 <script setup lang="ts">
@@ -36,6 +37,7 @@
   let results: Ref<seiyuu[]> = ref([]);
   let props = defineProps({ fulldata: Object });
   let isLoaded: Ref<boolean> = ref(false);
+  let warning: Ref<string> = ref('');
   const loadThis = () => {
     isLoaded.value = true;
   };
@@ -54,18 +56,43 @@
     }
   });
   document.addEventListener('click', handleClick);
+  let timer: any, timer2: any;
+  document.addEventListener('warning', (e) => {
+    clearTimeout(timer2);
+    warning.value = (e as CustomEventInit).detail;
+    timer2 = setTimeout(() => {
+      warning.value = '';
+    }, 3000);
+  });
   let inputDebounce = debounce(() => {
     results.value = [];
-    if (text.value.length > 1) {
-      for (const key in props.fulldata) {
-        let py = props.fulldata[key].pysx;
-        if (py) {
-          if ((py as string).startsWith(text.value)) {
-            results.value.push(props.fulldata[key]);
+    clearInterval(timer);
+    if (text.value.length > 0) {
+      if (text.value.length == 1) {
+        timer = setTimeout(() => {
+          let warningEvent = new CustomEvent('warning', { detail: '请至少输入两个字母' });
+          document.dispatchEvent(warningEvent);
+        }, 2000);
+        console.log(timer);
+      } else {
+        warning.value = '';
+        for (const key in props.fulldata) {
+          let py = props.fulldata[key].pysx;
+          if (py) {
+            if ((py as string).startsWith(text.value)) {
+              results.value.push(props.fulldata[key]);
+            }
           }
+        }
+        if (results.value.length === 0) {
+          let warningEvent = new CustomEvent('warning', { detail: '没有找到！' });
+          document.dispatchEvent(warningEvent);
+        } else {
+          warning.value = '';
         }
       }
     }
+
     isLoaded.value = true;
   }, 400);
   watch(text, () => {
@@ -86,6 +113,8 @@
     border-radius: 6px;
     overflow: hidden;
     transition: $transition;
+    position: relative;
+    top: 50px;
   }
   .bar {
     // padding: 5px 10px;
@@ -161,5 +190,27 @@
   }
   .highlight {
     color: #333;
+  }
+  .warning {
+    color: #fff;
+    position: relative;
+    top: 60px;
+    width: fit-content;
+    background-color: #fd7272;
+    padding: 5px 20px;
+    border-radius: 6px;
+    margin: 0 auto;
+    z-index: -1;
+    animation-name: warn;
+    animation-duration: 0.15s;
+    animation-timing-function: ease-out;
+  }
+  @keyframes warn {
+    from {
+      top: 10px;
+    }
+    to {
+      top: 60px;
+    }
   }
 </style>

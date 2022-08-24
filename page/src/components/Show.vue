@@ -93,6 +93,7 @@
       // justify-content: space-around;
       align-items: center;
       margin-top: 20px;
+      margin-bottom: 20px;
       width: 360px;
     }
   }

@@ -105,10 +105,6 @@
       font-size: 20px;
     }
   }
-  #search {
-    position: relative;
-    top: 50px;
-  }
   #show {
     position: absolute;
     top: 320px;
@@ -127,6 +123,7 @@
         justify-content: center;
         align-items: center;
         margin: 0 auto;
+        border: 0.01px solid #999;
       }
     }
     rt {
