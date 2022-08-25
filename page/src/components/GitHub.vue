@@ -11,7 +11,7 @@
         fill="currentColor" class="octo-body"></path>
     </svg></a>
 </template>
-<style>
+<style scoped>
 .github-corner:hover .octo-arm {
   animation: octocat-wave 560ms ease-in-out
 }

@@ -417,7 +417,7 @@ Raychell:
       - null
   birth: 1987年1月24日
   jimusho: Sun Music Production
-  profile: http://www.sunmusic.org/profile/morino_mako.html
+  profile: https://www.sunmusic-gp.co.jp/talent/morino_mako/
   twitter: https://twitter.com/makomorino
   instagram: null
   blog: null
@@ -1627,9 +1627,9 @@ Raychell:
     - - 立花子
       - りかこ
   birth: 3月30日
-  jimusho: JTB Entertainment
-  profile: http://www.jtb-entertainment-academy.com/pro/?page_id=93
-  twitter: null
+  jimusho: Sun Music Production
+  profile: https://www.sunmusic-gp.co.jp/talent/yamaguchi_rikako/
+  twitter: https://twitter.com/YamaguchiRikako
   instagram: null
   blog: http://ameblo.jp/genki-morisoba/
   check: false
@@ -3679,8 +3679,8 @@ Machico:
     - - 麻結
       - まゆ
   birth: 1996年4月15日
-  jimusho: Sunmusic
-  profile: https://www.sunmusic.org/profile/iizuka_mayu.html
+  jimusho: Sun Music Production
+  profile: https://www.sunmusic-gp.co.jp/talent/iizuka_mayu/
   twitter: https://twitter.com/iizuka_mayu
   instagram: https://www.instagram.com/i_mayu_zzz/
   blog: https://ameblo.jp/kyomo-mayutto/

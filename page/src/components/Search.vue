@@ -69,13 +69,12 @@ let inputDebounce = debounce(() => {
         let warningEvent = new CustomEvent('warning', { detail: '请至少输入两个字母' });
         document.dispatchEvent(warningEvent);
       }, 2000);
-      console.log(timer);
     } else {
       warning.value = '';
       for (const key in props.fulldata) {
         let py = props.fulldata[key].pysx;
         if (py) {
-          if ((py as string).startsWith(text.value)) {
+          if ((py as string).startsWith(text.value.toLowerCase())) {
             results.value.push(props.fulldata[key]);
           }
         }
