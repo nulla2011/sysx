@@ -1,0 +1,66 @@
+.loading-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background-color: #fff;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+.loading-main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.loading-text {
+  margin: auto;
+  width: fit-content;
+  font-size: 30px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+  color: #1a2b3c;
+  user-select: none;
+}
+.loading-bar,
+.loading-bar::after {
+  margin-top: 10px;
+  width: 200px;
+  height: 5px;
+  border-radius: 2px;
+  display: block;
+  overflow: clip;
+}
+.loading-bar {
+  background-color: #46acf5;
+}
+.loading-bar::after {
+  content: '';
+  background-image: radial-gradient(circle, #d3e5f1 2px, transparent 56px);
+  transform: translate(0%);
+  animation: 1.5s linear -0.4s infinite bar;
+}
+@keyframes bar {
+  from {
+    transform: translate(-75%);
+  }
+  to {
+    transform: translate(75%);
+  }
+}
+.animating-fadeout {
+  animation-name: fade-out;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

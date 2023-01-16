@@ -8,9 +8,9 @@ import loadimg from './assets/loading-spin.svg';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-library.add(fab, fas);
+import { faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+library.add(faTwitter, faInstagram, faUpRightFromSquare);
 
 createApp(App)
   .use(VueLazyload, {

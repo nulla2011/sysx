@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build --base=/sysx/ && cp -rfv ./dist/* /c/code/blog/public/sysx/",
+    "build": "vue-tsc --noEmit && vite build && cp -rfv ./dist/* /c/code/blog/public/sysx/ ",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -12,12 +12,12 @@
     "@fortawesome/free-brands-svg-icons": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.2",
     "@fortawesome/vue-fontawesome": "^3.0.1",
-    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "vue": "^3.2.37",
     "vue-lazyload": "3.0.0-rc.2"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.182",
+    "@types/lodash-es": "^4.17.6",
     "@vitejs/plugin-vue": "^2.3.4",
     "sass": "^1.54.4",
     "typescript": "^4.7.4",

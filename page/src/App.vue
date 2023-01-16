@@ -6,6 +6,7 @@ import GitHub from './components/GitHub.vue';
 
 let seiyuuData: Ref<{ [key: string]: seiyuu }> = ref({});
 let name: Ref<string> = ref('');
+let isLoading = ref(true);
 let seiyuu = computed(() => {
   return seiyuuData.value?.[name.value];
 });
@@ -23,9 +24,14 @@ let nameHTML = computed(() => {
 });
 onMounted(
   async () =>
-  (seiyuuData.value = await fetch('/seiyuu-info.json').then((response) =>
-    response.json()
-  ))
+  (await fetch('/sysx/seiyuu-info.json').then((response) => response.json()).then((value) => {
+    seiyuuData.value = value;
+    let loading = document.querySelector('.loading-screen')!;
+    loading.classList.add('animating-fadeout');
+    setTimeout(() => {
+      if (loading) loading.remove();
+    }, 600);
+  }))
 );
 const processSelect = (n: string) => {
   name.value = n;
@@ -94,7 +100,7 @@ const processSelect = (n: string) => {
 
 // @import url('https://fonts.font.im/css?family=Nunito:200,300,400,600');
 #app {
-  font-family: Nunito, sans-serif;
+  font-family: Nunito, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */

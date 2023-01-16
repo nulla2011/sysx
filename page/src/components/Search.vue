@@ -27,7 +27,7 @@
 import { searchWidth } from '../settings';
 import { Ref, ref, watch } from 'vue';
 import img_404 from '../assets/no-image-icon-23485.png';
-import { debounce } from 'lodash';
+import { debounce } from 'lodash-es';
 
 let text = ref('');
 let results: Ref<seiyuu[]> = ref([]);
@@ -134,6 +134,10 @@ $transition: all 0.3s ease-out;
     font-size: 1.6em;
     outline: none;
     font-family: Nunito,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
     sans-serif;
     /* font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
       Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; */
