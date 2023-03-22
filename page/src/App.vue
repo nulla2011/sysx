@@ -3,10 +3,10 @@ import { computed, onMounted, ref, Ref } from 'vue';
 import Search from './components/Search.vue';
 import Show from './components/Show.vue';
 import GitHub from './components/GitHub.vue';
+import Quote from "./components/Quote.vue";
 
 let seiyuuData: Ref<{ [key: string]: seiyuu }> = ref({});
 let name: Ref<string> = ref('');
-let isLoading = ref(true);
 let seiyuu = computed(() => {
   return seiyuuData.value?.[name.value];
 });
@@ -44,6 +44,7 @@ const processSelect = (n: string) => {
   </h1>
   <GitHub></GitHub>
   <Search id="search" :fulldata="seiyuuData" @selected="processSelect"></Search>
+  <Quote v-show="!name"></Quote>
   <Show id="show" v-if="name">
     <template v-if="seiyuu?.photo" #photo>
       <div id="photo"><img v-lazy="seiyuu?.photo" /></div>
