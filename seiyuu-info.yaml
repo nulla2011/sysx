@@ -5434,7 +5434,7 @@ Machico:
   instagram: null
   blog: null
   check: false
-  photo: null
+  photo: https://seigura.com/wp-content/uploads/2023/03/dedc47ce8e7a55b72b66afacceaec9a6.jpg
 三村遥佳:
   pysx: scyj
   jaName:
@@ -5929,7 +5929,7 @@ Machico:
   instagram: https://www.instagram.com/mizuno_saku/
   blog: null
   check: false
-  photo: null
+  photo: https://seigura.com/wp-content/uploads/2023/03/8fbc0b12766a5a9a5b215e8fb760a011.jpg
 寺本来可:
   pysx: sblk
   jaName:
@@ -7504,7 +7504,7 @@ Payton尚未:
   instagram: null
   blog: null
   check: false
-  photo: null
+  photo: https://seigura.com/wp-content/uploads/2023/03/16be0fcfcc5d6099ff74500d05f94454.jpg
 长谷川玲奈:
   pysx: cgcln
   jaName:
@@ -7684,7 +7684,7 @@ Payton尚未:
   instagram: null
   blog: null
   check: false
-  photo: null
+  photo: https://seigura.com/wp-content/uploads/2023/03/139c6c61f167158f38a922ba4bbb388b.jpg
 佳原萌枝:
   pysx: jymz
   jaName:
@@ -11642,6 +11642,7 @@ mika:
   instagram: null
   blog: null
   check: false
+  photo: null
 小茅枫:
   pysx: xmf
   jaName:
@@ -11656,6 +11657,7 @@ mika:
   instagram: null
   blog: null
   check: false
+  photo: null
 青木阳菜:
   pysx: qmyc
   jaName:
@@ -11665,11 +11667,12 @@ mika:
       - ひな
   birth: 2000年1月5日
   jimusho: 响 (HiBiKi)
-  profile: null
+  profile: https://hibiki-cast.jp/hibiki_f/aoki_hina/
   twitter: null
   instagram: null
   blog: null
   check: true
+  photo: https://seigura.com/wp-content/uploads/2023/03/a1edecf138f0bc1c125462249c00d64a.jpg
 春日樱:
   pysx: cry
   jaName:
@@ -11684,6 +11687,7 @@ mika:
   instagram: null
   blog: null
   check: false
+  photo: null
 小森结梨:
   pysx: xsjl
   jaName:
@@ -11698,6 +11702,7 @@ mika:
   instagram: null
   blog: null
   check: false
+  photo: null
 伊驹百合绘:
   pysx: yjbhh
   jaName:
@@ -11712,6 +11717,7 @@ mika:
   instagram: null
   blog: null
   check: false
+  photo: null
 柊优花:
   pysx: zyh
   jaName:
@@ -11726,3 +11732,4 @@ mika:
   instagram: null
   blog: null
   check: false
+  photo: null
