@@ -18,7 +18,8 @@
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "vue": "^3.2.37",
-    "vue-lazyload": "3.0.0-rc.2"
+    "vue-lazyload": "3.0.0-rc.2",
+    "yaml": "^2.2.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.4",
