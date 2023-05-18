@@ -11546,7 +11546,7 @@ mika:
     - - 麻里
       - まり
   birth: 1994年12月15日
-  jimusho: "[[S"
+  jimusho: "S"
   profile: https://www.s-inc.jp/artist/%E9%AB%99%E6%A9%8B-%E9%BA%BB%E9%87%8C/
   twitter: https://twitter.com/takahashimari15
   instagram: https://www.instagram.com/takahashimari15/
@@ -11613,3 +11613,116 @@ mika:
   blog: null
   check: false
   photo: null
+远藤瑠香:
+  pysx: ytlx
+  jaName:
+    - - 遠藤
+      - えんどう
+    - - 瑠香
+      - るか
+  birth: 9月9日
+  jimusho: DoubleArrow
+  profile: https://doublearrow.co.jp/
+  twitter: https://twitter.com/rukapyon0909
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+水野亚美:
+  pysx: syym
+  jaName:
+    - - 水野
+      - みずの
+    - - 亜美
+      - あみ
+  birth: 1999年6月4日
+  jimusho: 81 Produce
+  profile: https://www.81produce.co.jp/actor_search/index.php/item?id=385
+  twitter: https://twitter.com/mijunoami
+  instagram: null
+  blog: null
+  check: false
+小茅枫:
+  pysx: xmf
+  jaName:
+    - - 小茅
+      - こがや
+    - - 楓
+      - かえで
+  birth: 2001年10月12日
+  jimusho: Crocodile
+  profile: https://www.crocodile-ltd.com/talent/kogaya-kaede
+  twitter: https://twitter.com/kogaya_kaede
+  instagram: null
+  blog: null
+  check: false
+青木阳菜:
+  pysx: qmyc
+  jaName:
+    - - 青木
+      - あおき
+    - - 陽菜
+      - ひな
+  birth: 2000年1月5日
+  jimusho: 响 (HiBiKi)
+  profile: null
+  twitter: null
+  instagram: null
+  blog: null
+  check: true
+春日樱:
+  pysx: cry
+  jaName:
+    - - 春日
+      - かすが
+    - - さくら
+      - null
+  birth: 12月12日
+  jimusho: 青二事務所
+  profile: https://www.aoni.co.jp/search/kasuga-sakura.html
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+小森结梨:
+  pysx: xsjl
+  jaName:
+    - - 小森
+      - こもり
+    - - 結梨
+      - ゆり
+  birth: 2月22日
+  jimusho: 东京俳优生活协同组合
+  profile: https://haikyo.co.jp/profile/profile.php?ActorID=12996
+  twitter: https://twitter.com/yuri_komori222
+  instagram: null
+  blog: null
+  check: false
+伊驹百合绘:
+  pysx: yjbhh
+  jaName:
+    - - 伊駒
+      - いごま
+    - - ゆりえ
+      - null
+  birth: 2月24日
+  jimusho: 81 Produce
+  profile: https://www.81produce.co.jp/actor_search/index.php/item?id=395
+  twitter: https://twitter.com/igoma_y
+  instagram: null
+  blog: null
+  check: false
+柊优花:
+  pysx: zyh
+  jaName:
+    - - 柊
+      - ひいらぎ
+    - - 優花
+      - ゆか
+  birth: 5月30日
+  jimusho: 无
+  profile: http://mand-i.jp/talent/yoshioka-misaki/
+  twitter: https://twitter.com/hiiragi_yuka530
+  instagram: null
+  blog: null
+  check: false

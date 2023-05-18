@@ -13,7 +13,7 @@ fs.readFile(path.resolve(__dirname, '../', SEIYUU_INFO), 'utf-8', (err, data) =>
     jdata[key].zhName = key;
   }
   fs.writeFileSync(
-    path.resolve(__dirname, '../', 'seiyuu-info.json'),
+    path.resolve(__dirname, '../public', 'seiyuu-info.json'),
     JSON.stringify(jdata),
     'utf-8'
   );
