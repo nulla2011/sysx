@@ -24,7 +24,7 @@ let nameHTML = computed(() => {
 });
 onMounted(
   async () =>
-  (await fetch('/seiyuu-info.json').then((response) => response.json()).then((value) => {
+  (await fetch('./seiyuu-info.json').then((response) => response.json()).then((value) => {
     seiyuuData.value = value;
     let loading = document.querySelector('.loading-screen')!;
     loading.classList.add('animating-fadeout');

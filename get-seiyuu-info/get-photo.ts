@@ -28,7 +28,7 @@ const getPhoto = async (name: string) => {
     }
     for (const el of result) {
       if ($('.entry-title a', el).text().replace(/\s/g, '') == name) {
-        return $('.archive-thumbnail > a > img', el).attr('src')!;
+        return $('.archive-thumbnail > a > img', el).attr('data-src')!;
       }
     }
     logError(`${name} not match!`);
@@ -46,9 +46,9 @@ const main = async () => {
       scrapedPhoto = {};
     }
     for (const key in info) {
-      if (scrapedPhoto[key].hasOwnProperty('photo')) {
-        continue;
-      }
+      // if (scrapedPhoto[key].hasOwnProperty('photo')) {
+      //   continue;
+      // }
       let name = info[key].jaName;
       name =
         typeof name == 'string'

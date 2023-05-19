@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "node ./get-seiyuu-info/publish.js && vue-tsc --noEmit && vite build",
+    "build": "node ./script/data2json.js && vue-tsc --noEmit && vite build",
     "build:github": "vue-tsc --noEmit && vite build --base=/sysx/ && cp -rfv ./dist/* /c/code/blog/public/sysx/ ",
     "preview": "vite preview"
   },
@@ -17,15 +17,16 @@
     "@types/lodash-es": "^4.17.7",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
+    "vite-plugin-pwa": "^0.14.7",
     "vue": "^3.2.37",
     "vue-lazyload": "3.0.0-rc.2",
     "yaml": "^2.2.2"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.3.4",
+    "@vitejs/plugin-vue": "^4.2.3",
     "sass": "^1.54.4",
-    "typescript": "^4.7.4",
-    "vite": "^2.9.15",
-    "vue-tsc": "^0.34.17"
+    "typescript": "^4.9.5",
+    "vite": "^4.3.8",
+    "vue-tsc": "^0.35.0"
   }
 }

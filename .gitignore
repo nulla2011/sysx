@@ -27,7 +27,7 @@ dist-ssr
 *.yaml
 !seiyuu-info.yaml
 *.js
-!publish.js
+!data2json.js
 seiyuu-info.json
 dist
 .vscode/
