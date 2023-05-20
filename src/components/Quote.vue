@@ -29,15 +29,20 @@ $border: 2px;
   background-color: $backgroundcolor;
   padding: 1em;
   max-width: 38em;
+  min-width: 24em;
+
+  @media screen and (max-width: 480px) {
+    min-width: 100vw;
+  }
+
   display: flex;
-  background:
-    linear-gradient(to right, $color $border, $backgroundcolor $border, $backgroundcolor calc(100% - $border), $color calc(100% - $border)) 0 100%;
+  background: linear-gradient(to right, $color $border, $backgroundcolor $border, $backgroundcolor calc(100% - $border), $color calc(100% - $border)) 0 100%;
   background-repeat: no-repeat;
 
   .quote-left,
   .quote-right {
     color: $color;
-    width: 9em;
+    width: 2em;
     opacity: 50%;
   }
 
@@ -52,6 +57,7 @@ $border: 2px;
   .wrap {
     display: flex;
     flex-direction: column;
+    // flex: 1;
   }
 
   blockquote {
@@ -67,6 +73,7 @@ $border: 2px;
   cite {
     text-align: right;
     padding-right: 2em;
+    color: #111;
   }
 }
 </style>
