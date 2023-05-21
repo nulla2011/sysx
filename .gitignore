@@ -26,11 +26,9 @@ dist-ssr
 *.csv
 *.yaml
 !seiyuu-info.yaml
+!.github/**/*.yaml
 *.js
 !data2json.js
 seiyuu-info.json
-dist
-.vscode/
-.pnpm-debug.log
 *.bak
 note.md
