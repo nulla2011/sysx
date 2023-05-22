@@ -10,7 +10,7 @@ export default defineConfig({
       manifest: {
         name: '女声优拼音缩写查询',
         short_name: 'sysx',
-        description: '查询女声优拼音缩写',
+        description: '查询女声优拼音首字母缩写',
         theme_color: '#f6f7f8',
         icons: [
           { src: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
