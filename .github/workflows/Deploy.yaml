@@ -45,7 +45,7 @@ jobs:
         run: pnpm install
       - name: Build 🔧
         run: |
-          pnpm run build
+          pnpm run build:github
       - name: Overwrite sysx
         run: |
           rm -rf ghPage/sysx/**

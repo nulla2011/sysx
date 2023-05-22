@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "node ./script/data2json.js && vue-tsc --noEmit && vite build",
-    "build:github": "vue-tsc --noEmit && vite build --base=/sysx/ && cp -rfv ./dist/* /c/code/blog/public/sysx/ ",
+    "build:github": "node ./script/data2json.js && vue-tsc --noEmit && vite build --base=/sysx/",
+    "build:local": "vue-tsc --noEmit && vite build --base=/sysx/ && cp -rfv ./dist/* /c/code/blog/public/sysx/ ",
     "preview": "vite preview"
   },
   "dependencies": {
