@@ -24,9 +24,6 @@ dist-ssr
 *.sw?
 
 *.csv
-*.yaml
-!seiyuu-info.yaml
-!.github/**/*.yaml
 *.js
 !data2json.js
 seiyuu-info.json
