@@ -7909,7 +7909,7 @@ Payton尚未:
   instagram: null
   blog: null
   check: false
-  photo: https://seigura.com/wp-content/uploads/2018/10/natsume-kokonaaa.jpg
+  photo: https://seigura.com/wp-content/uploads/2023/03/a1ce94e1784a5bba70741f6ba3f5ad12.jpg
 相川奏多:
   pysx: xczd
   jaName:
@@ -11758,7 +11758,7 @@ mika:
   birth: 10月24日
   jimusho: 青二事務所
   profile: https://www.aoni.co.jp/search/hanamiya-niina.html
-  twitter: null
+  twitter: https://twitter.com/hanamiya_nina
   instagram: null
   blog: null
   check: false
@@ -11792,7 +11792,7 @@ mika:
   instagram: null
   blog: null
   check: false
-  photo: null
+  photo: https://seigura.com/wp-content/uploads/2018/10/c937c8e24996d5.jpg
 三川华月:
   pysx: schy
   jaName:
@@ -11807,7 +11807,7 @@ mika:
   instagram: null
   blog: null
   check: false
-  photo: null
+  photo: https://seigura.com/wp-content/uploads/2018/10/c93474c2865317447c8e24996d5.jpg
 坂仓花:
   pysx: bch
   jaName:
@@ -11909,6 +11909,677 @@ mika:
   jimusho: EARLY WING
   profile: http://earlywing.co.jp/sp/pretalent_w/sawadahime.html
   twitter: https://twitter.com/hime_sawada
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+MAKIKO:
+  pysx: null
+  jaName: MAKIKO
+  birth: 1992年12月21日
+  jimusho: EARLY WING
+  profile: https://www.earlywing.co.jp/actordb/categ/item_149
+  twitter: null
+  instagram: null
+  blog: null
+  check: true
+  photo: null
+高桥菜菜美:
+  pysx: gqccm
+  jaName:
+    - - 高橋
+      - たかはし
+    - - 菜々美
+      - ななみ
+  birth: 1998年7月16日
+  jimusho: Style Cube
+  profile: null
+  twitter: https://twitter.com/takahashi_773
+  instagram: null
+  blog: null
+  check: true
+  photo: null
+后藤彩佐:
+  pysx: htcz
+  jaName:
+    - - 後藤
+      - ごとう
+    - - 彩佐
+      - あやさ
+  birth: 1998年11月23日
+  jimusho: 81 Produce
+  profile: https://www.81produce.co.jp/actor_search/index.php/item?id=377
+  twitter: https://twitter.com/510ayasa
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2023/03/d39de9b41d1d7ae4eb3beb9f42ec37dc.jpg
+久远艾丽莎:
+  pysx: jyals
+  jaName:
+    - - 久遠
+      - くおん
+    - - エリサ
+      - null
+  birth: 1996年7月17日
+  jimusho: 81 Produce
+  profile: https://www.81produce.co.jp/actor_search/index.php/item?id=190
+  twitter: https://twitter.com/eri1717171
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+铃木美咲:
+  pysx: lmmx
+  jaName:
+    - - 鈴木
+      - すずき
+    - - 美咲
+      - みさき
+  birth: 1990年2月3日
+  jimusho: Wonder Space
+  profile: http://www.wonder-space.net/talent/-/鈴木美咲
+  twitter: https://twitter.com/misaki31mii
+  instagram: null
+  blog: https://ameblo.jp/misaki0203/
+  check: false
+  photo: null
+美坂朱音:
+  pysx: mbzy
+  jaName:
+    - - 美坂
+      - みさか
+    - - 朱音
+      - あかね
+  birth: 1996年8月4日
+  jimusho: crocodile
+  profile: https://www.crocodile-ltd.com/talent/misaka-akane
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+平野有纱:
+  pysx: pyys
+  jaName:
+    - - 平野
+      - ひらの
+    - - 有紗
+      - ありさ
+  birth: 8月9日
+  jimusho: TAB Production
+  profile: http://www.tab-pro.co.jp/tabpro/artists/hirano_arisa.html
+  twitter: null
+  instagram: null
+  blog: https://ameblo.jp/hirano-arisa/
+  check: true
+  photo: null
+七木奏音:
+  pysx: qmzy
+  jaName:
+    - - 七木
+      - ななき
+    - - 奏音
+      - かのん
+  birth: 1997年2月7日
+  jimusho: Stardust Promotion
+  profile: https://www.stardust.co.jp/sp/profile/nanakikanon.html
+  twitter: https://twitter.com/nanaki_staff
+  instagram: https://www.instagram.com/nanaki.kanon/
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2023/03/9659514723648556672aee27ee45e3a1.jpg
+塙有咲:
+  pysx: qyx
+  jaName:
+    - - 塙
+      - はなわ
+    - - 有咲
+      - ありさ
+  birth: 1996年3月18日
+  jimusho: Holy Peak
+  profile: https://holypeak.com/talent/voice-actor-women/arisahanawa/
+  twitter: https://twitter.com/arisahanawa
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2023/03/2092c893e64ba526bf38aab877706173.jpg
+入江麻衣子:
+  pysx: rjmyz
+  jaName:
+    - - 入江
+      - いりえ
+    - - 麻衣子
+      - まいこ
+  birth: 1993年2月6日
+  jimusho: WITH LINE
+  profile: https://withline.jp/talent/maiko_irie
+  twitter: https://twitter.com/iriemaiko
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2023/03/60f6c9262f32fe31772057d5fbb8b23b.jpg
+山口茜:
+  pysx: skq
+  jaName:
+    - - 山口
+      - やまぐち
+    - - 茜
+      - あかね
+  birth: 1996年3月1日
+  jimusho: 悟空
+  profile: https://go-coo.com/#ta_akane_yamaguchi
+  twitter: https://twitter.com/akane__31
+  instagram: null
+  blog: null
+  check: true
+  photo: https://seigura.com/wp-content/uploads/2023/03/6a29664e51f9f2d0a180dd4500298b17.jpg
+石田晴香:
+  pysx: stqx
+  jaName:
+    - - 石田
+      - いしだ
+    - - 晴香
+      - はるか
+  birth: 1993年12月2日
+  jimusho: Horipro
+  profile: https://www.horipro.co.jp/ishidaharuka/
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+辻美优:
+  pysx: smy
+  jaName:
+    - - 辻
+      - つじ
+    - - 美優
+      - みゆう
+  birth: 1996年7月6日
+  jimusho: 青二事务所
+  profile: https://www.aoni.co.jp/search/tsuji-miyuu.html
+  twitter: null
+  instagram: null
+  blog: null
+  check: true
+  photo: https://seigura.com/wp-content/uploads/2018/10/94c41a27e03e180fc3902d2d3d979329.jpg
+松本沙罗:
+  pysx: sbsl
+  jaName:
+    - - 松本
+      - まつもと
+    - - 沙羅
+      - さら
+  birth: 1992年5月25日
+  jimusho: Kenyu Office
+  profile: http://kenyu-office.com/matsumotosara/
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2020/06/579df1ed98825938a98963bd3f8a0c36.jpg
+松村沙友理:
+  pysx: scsyl
+  jaName:
+    - - 松村
+      - まつむら
+    - - 沙友理
+      - さゆり
+  birth: 1992年8月27日
+  jimusho: 乃木坂46合同会社
+  profile: https://sayurimatsumura.com/s/m10/?ima=1746
+  twitter: null
+  instagram: null
+  blog: null
+  check: true
+  photo: null
+相川奈都姬:
+  pysx: xcndj
+  jaName:
+    - - 相川
+      - あいかわ
+    - - 奈都姫
+      - なつき
+  birth: 1990年8月21日
+  jimusho: 贤Production
+  profile: https://www.kenproduction.co.jp/talent/151
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2023/03/6c4dfe69e46691189a2aa7be6a6e8f72.jpg
+小岛菜菜惠:
+  pysx: xdcch
+  jaName:
+    - - 小島
+      - こじま
+    - - 菜々恵
+      - ななえ
+  birth: 1998年4月21日
+  jimusho: Digital Double
+  profile: https://www.digitaldouble.co.jp/artists/nanae_kojima
+  twitter: https://twitter.com/KJnanae
+  instagram: null
+  blog: null
+  check: true
+  photo: null
+蟹泽萌子:
+  pysx: xzmz
+  jaName:
+    - - 蟹沢
+      - かにさわ
+    - - 萌子
+      - もえこ
+  birth: 1999年10月25日
+  jimusho: 代代木动画学院
+  profile: https://not-equal-me.jp/feature/profile_kanisawa_moeko
+  twitter: https://twitter.com/kanisawa_moeko
+  instagram: https://www.instagram.com/kanisawa_moeko_/
+  blog: null
+  check: false
+  photo: null
+幸田梦波:
+  pysx: xtmb
+  jaName:
+    - - 幸田
+      - こうだ
+    - - 夢波
+      - ゆめは
+  birth: 1992年4月18日
+  jimusho: 无
+  profile: null
+  twitter: https://twitter.com/KodaYumeha_sub
+  instagram: null
+  blog: https://yumemon.com/
+  check: true
+  photo: null
+玉城仁菜:
+  pysx: ycrc
+  jaName:
+    - - 玉城
+      - たまき
+    - - 仁菜
+      - にな
+  birth: 1996年2月29日
+  jimusho: Just Production
+  profile: http://www.just-pro.jp/talent/voice-actor/tamaki_nina/
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2023/03/f8be3a9308e245333b00266249ffe4dd.jpg
+曾我部英理:
+  pysx: zwbyl
+  jaName:
+    - - 曽我部
+      - そがべ
+    - - 英理
+      - えり
+  birth: 1995年8月25日
+  jimusho: Earth Star Entertainment
+  profile: http://comic-earthstar.jp/esd/sogabe.php
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+中岛优衣:
+  pysx: zdyy
+  jaName:
+    - - 中島
+      - なかじま
+    - - 優衣
+      - ゆい
+  birth: 1996年5月20日
+  jimusho: amuleto
+  profile: https://amuleto.jp/talents/nakajimayui.html
+  twitter: https://twitter.com/ic_yuipon
+  instagram: null
+  blog: null
+  check: true
+  photo: null
+春名风花:
+  pysx: cmfh
+  jaName:
+    - - 春名
+      - はるな
+    - - 風花
+      - ふうか
+  birth: 2001年2月4日
+  jimusho: Production Ace
+  profile: https://www.production-ace.co.jp/ace_talent/fukaharuna/
+  twitter: https://twitter.com/harukazechan
+  instagram: https://www.instagram.com/harunafuka/
+  blog: https://lineblog.me/harukazechan/
+  check: false
+  photo: null
+古贺英里奈:
+  pysx: ghyln
+  jaName:
+    - - 古賀
+      - こが
+    - - 英里奈
+      - えりな
+  birth: 2000年11月28日
+  jimusho: 81 Produce
+  profile: https://www.81produce.co.jp/actor_search/index.php/item?id=404
+  twitter: https://twitter.com/ErinaKoga
+  instagram: null
+  blog: null
+  check: true
+  photo: null
+后本萌叶:
+  pysx: hbmy
+  jaName:
+    - - 後本
+      - のちもと
+    - - 萌葉
+      - もえは
+  birth: 2002年8月17日
+  jimusho: Apollo Bay
+  profile: https://apollobay.jp/talent/後本萌葉/
+  twitter: https://twitter.com/Moeha_Nochimoto
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2023/03/9e8f92098ad911ee9741f9befc7630c4.jpg
+日向未来:
+  pysx: rxwl
+  jaName:
+    - - 日向
+      - ひなた
+    - - 未来
+      - みらい
+  birth: 2002年9月13日
+  jimusho: ADESSO
+  profile: https://adessonet.co.jp/profile/23540/
+  twitter: https://twitter.com/hinatamirai0913
+  instagram: https://www.instagram.com/mirai_hinata.official/
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2023/03/12083cdc885b885a0247f4f97bfbb6f9.jpg
+藤寺美德:
+  pysx: tsmd
+  jaName:
+    - - 藤寺
+      - ふじでら
+    - - 美徳
+      - みのり
+  birth: 2006年12月18日
+  jimusho: Avex Pictures
+  profile: https://avex-pictures.co.jp/lineup/58780/
+  twitter: https://twitter.com/fujidera_minori
+  instagram: null
+  blog: null
+  check: true
+  photo: https://seigura.com/wp-content/uploads/2023/03/35caebbb80e5255d28eef4e7301755c9.jpg
+天野心爱:
+  pysx: tyxa
+  jaName:
+    - - 天野
+      - あまの
+    - - 心愛
+      - ここあ
+  birth: 2004年7月6日
+  jimusho: Space Craft
+  profile: https://www.toysfactory.co.jp/artist/kokoaamano
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+武田真理子:
+  pysx: wtzlz
+  jaName:
+    - - 武田
+      - たけだ
+    - - 真理子
+      - まりこ
+  birth: 2001年8月16日
+  jimusho: Space Craft
+  profile: http://www.spacecraft.co.jp/takeda_mariko/
+  twitter: https://twitter.com/takeda_mariko
+  instagram: null
+  blog: null
+  check: true
+  photo: null
+大木咲绘子:
+  pysx: dmxhz
+  jaName:
+    - - 大木
+      - おおき
+    - - 咲絵子
+      - さえこ
+  birth: 11月24日
+  jimusho: 大澤事務所
+  profile: https://osawa-inc.co.jp/women/ookisaeko/
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+风间万裕子:
+  pysx: fjwyz
+  jaName:
+    - - 風間
+      - かざま
+    - - 万裕子
+      - まゆこ
+  birth: 10月2日
+  jimusho: I'm Enterprise
+  profile: https://www.imenterprise.jp/profile.php?id=103
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+根本优奈:
+  pysx: gbyn
+  jaName:
+    - - 根本
+      - ねもと
+    - - 優奈
+      - ゆな
+  birth: 11月26日
+  jimusho: Crazy Box
+  profile: https://crazy-box.co.jp/talent73.html
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+河上英里子:
+  pysx: hsylz
+  jaName:
+    - - 河上
+      - かわかみ
+    - - 英里子
+      - えりこ
+  birth: 1998年8月4日
+  jimusho: Swallow
+  profile: http://swallow-p.com/actor/va_kawakami.html
+  twitter: https://x.com/Feri_usagi_
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+和久野爱佳:
+  pysx: hjyaj
+  jaName:
+    - - 和久野
+      - わくの
+    - - 愛佳
+      - あいか
+  birth: 9月12日
+  jimusho: Raccoon Dog
+  profile: https://www.raccoon-dog.co.jp/talent/r21-wakuno.html
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+镰仓有那:
+  pysx: lcyn
+  jaName:
+    - - 鎌倉
+      - かまくら
+    - - 有那
+      - ゆうな
+  birth: 9月30日
+  jimusho: ARISE PROJECT
+  profile: http://arise-pj.co.jp/talent/yuna-kamakura/
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2023/03/bfde6f46f2b7351562c30ce47151caf3.jpg
+麦穗杏菜:
+  pysx: msxc
+  jaName:
+    - - 麦穂
+      - むぎほ
+    - - あんな
+      - null
+  birth: 11月26日
+  jimusho: 无
+  profile: null
+  twitter: https://twitter.com/mugihoanna
+  instagram: null
+  blog: null
+  check: true
+  photo: null
+日向葵:
+  pysx: rxk
+  jaName:
+    - - 日向
+      - ひなた
+    - - 葵
+      - あおい
+  birth: 11月27日
+  jimusho: AZ creative
+  profile: http://www.az-creative.com/agent/more.php?a=1000151
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+藤本侑里:
+  pysx: tbyl
+  jaName:
+    - - 藤本
+      - ふじもと
+    - - 侑里
+      - ゆり
+  birth: 9月11日
+  jimusho: FIRST WIND production
+  profile: https://firstwind.co.jp/talentpage/fujimoto_yuri
+  twitter: https://twitter.com/yuri_f_shibainu
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+鹈殿麻由:
+  pysx: tdmy
+  jaName:
+    - - 鵜殿
+      - うどの
+    - - 麻由
+      - まゆ
+  birth: 8月16日
+  jimusho: Kaleidoscope
+  profile: https://klsp.jp/actor/mayu-udono/
+  twitter: null
+  instagram: null
+  blog: http://ameblo.jp/udonomayu816/
+  check: true
+  photo: https://seigura.com/wp-content/uploads/2023/03/d9e8a44769ac88674c97a6db76f32b0b.jpg
+丸山有香:
+  pysx: wsyx
+  jaName:
+    - - 丸山
+      - まるやま
+    - - 有香
+      - ゆか
+  birth: 10月3日
+  jimusho: 贤Production
+  profile: https://www.kenproduction.co.jp/talent/146
+  twitter: https://twitter.com/maruyuka1003
+  instagram: null
+  blog: null
+  check: true
+  photo: null
+夏目妃菜:
+  pysx: xmfc
+  jaName:
+    - - 夏目
+      - なつめ
+    - - 妃菜
+      - ひな
+  birth: 9月13日
+  jimusho: 青二Production
+  profile: https://www.aoni.co.jp/search/natsume-hina.html
+  twitter: https://twitter.com/natsume_hina
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+小田果林:
+  pysx: xtgl
+  jaName:
+    - - 小田
+      - おだ
+    - - 果林
+      - かりん
+  birth: 5月14日
+  jimusho: Style Cube
+  profile: http://stylecube.jp/talents/karin/index.html
+  twitter: https://twitter.com/kodomoooo
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+永牟田萌:
+  pysx: ymtm
+  jaName:
+    - - 永牟田
+      - ながむた
+    - - 萌
+      - もえ
+  birth: 8月22日
+  jimusho: ACROSS ENTERTAINMENT
+  profile: https://across-ent.com/talent/women/moe_nagamuta.html
+  twitter: https://twitter.com/moenagamuta
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+月城莉奈:
+  pysx: ycln
+  jaName:
+    - - 月城
+      - つきしろ
+    - - 莉奈
+      - りな
+  birth: 2月25日
+  jimusho: Style Cube
+  profile: http://stylecube.jp/talents/rina/index.html
+  twitter: https://twitter.com/tsukishirorina
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+佐藤榛夏:
+  pysx: ztzx
+  jaName:
+    - - 佐藤
+      - さとう
+    - - 榛夏
+      - はるか
+  birth: 8月13日
+  jimusho: I'm Enterprise
+  profile: https://www.imenterprise.jp/profile.php?id=180
+  twitter: null
   instagram: null
   blog: null
   check: false

@@ -8,11 +8,13 @@ import { parseWiki } from './parse-wikitext';
 import { isAllChinese, logError, logWarning, log, randomTimeLong } from './utils';
 import { formatJimusho } from './utils/formatJimusho';
 import { pyszm } from './pyszm';
+import { readFileSync } from 'fs';
 
 const MOEGIRL_API = new URL('https://zh.moegirl.org.cn/api.php');
 const SEIYUU_LIST = 'seiyuu-list_constrict1.csv';
 const SEIYUU_INFO = 'seiyuu-info.yaml';
 const SEIYUU_INFO_PATH = path.resolve(__dirname, '../', SEIYUU_INFO);
+const COOKIE = readFileSync('cookie.secr', 'utf-8');
 
 const params: { [key: string]: string } = {
   action: 'query',
@@ -43,6 +45,7 @@ class Seiyuu {
     try {
       response = await axios.get(MOEGIRL_API.href, {
         headers: {
+          cookie: COOKIE,
           'user-agent': new UserAgent().toString(),
         },
       });
