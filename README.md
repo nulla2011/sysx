@@ -1,23 +1,23 @@
 # sysx
 
-**#查询女生有拼音首字母缩写**
+**#查询女声优拼音首字母缩写**
 
 ## Project Setup
 
 ### Install
 
 ```bash
-$ npm install
+$ pnpm install
 ```
 
 ### Development
 
 ```bash
-$ npm run dev
+$ pnpm dev
 ```
 
 ### Build
 
 ```bash
-$ npm run build
+$ pnpm build
 ```
