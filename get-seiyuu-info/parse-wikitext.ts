@@ -24,7 +24,8 @@ function sliceText(text: string, startReg: RegExp, endMark = '}') {
       default:
         break;
     }
-    if (text[end] == endMark && curlyBrackets.isEmpty()) {
+    if ((text[end] == endMark && curlyBrackets.isEmpty()) || end >= text.length) {
+      //maybe out of range
       break;
     }
     end++;

@@ -1,4 +1,4 @@
-import cheerio from 'cheerio';
+import * as cheerio from 'cheerio';
 import YAML from 'yaml';
 import axios, { AxiosResponse } from 'axios';
 import { log, logError, logWarning, randomTimeShort } from './utils';
