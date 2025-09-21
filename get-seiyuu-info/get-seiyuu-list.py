@@ -40,6 +40,6 @@ if __name__ == "__main__":
         #if not hasLettersAndDot(name.text):  #去掉含英文的名字和带点的外文名字
         if not (name.attrs.get('class')):  #去掉没页面的
             seiyuuList.append([name.text, (list(name.absolute_links))[0]])
-    with open('seiyuu-list.csv', 'w', encoding='utf-8', newline='') as c:
+    with open(f'seiyuu-list_{time.strftime("%y%m%d", time.localtime()) }.csv', 'w', encoding='utf-8', newline='') as c:
         w = csv.writer(c)
         w.writerows(seiyuuList)
