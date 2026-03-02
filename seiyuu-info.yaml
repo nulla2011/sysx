@@ -10356,21 +10356,6 @@ mika:
   blog: null
   check: false
   photo: https://seigura.com/wp-content/uploads/2025/04/532a1b815fbd37eedbd49aed5017fb7b.jpg
-凑みや:
-  pysx: null
-  jaName:
-    - - 湊
-      - みなと
-    - - みや
-      - null
-  birth: 2005年12月16日
-  jimusho: 东京俳优生活协同组合
-  profile: https://haikyo.co.jp/profile/profile5.php?ActorID=13064
-  twitter: https://x.com/miya_minato1216
-  instagram: null
-  blog: null
-  check: true
-  photo: https://seigura.com/wp-content/uploads/2025/04/74e5682abc29690acfde59645aa50712.jpg
 大木咲绘子:
   pysx: dmxhz
   jaName:
@@ -13263,8 +13248,8 @@ mika:
   birth: 2007年1月5日
   jimusho: StarRise
   profile: https://starrise.info/artists/miyano_seri/
-  twitter: null
-  instagram: null
+  twitter: https://twitter.com/srchan07
+  instagram: https://www.instagram.com/srchan07/
   blog: null
   check: false
   photo: null
@@ -13313,21 +13298,6 @@ mika:
   blog: null
   check: false
   photo: null
-咲川雏乃:
-  pysx: xccn
-  jaName:
-    - - 咲川
-      - さきかわ
-    - - ひなの
-      - null
-  birth: 2004年1月22日
-  jimusho: Stay Luck
-  profile: https://stay-luck.com/talent/sakikawa-hinano/
-  twitter: https://x.com/hinano_sak122
-  instagram: null
-  blog: null
-  check: false
-  photo: null
 远藤璃菜:
   pysx: ytlc
   jaName:
@@ -13339,7 +13309,7 @@ mika:
   jimusho: At Production
   profile: https://www.at-production.jp/talent/endo-rina/
   twitter: https://twitter.com/e_rina_ta
-  instagram: null
+  instagram: https://www.instagram.com/e_rina_ta/
   blog: null
   check: false
   photo: https://seigura.com/wp-content/uploads/2025/04/1e821e887c7e8dca25b016ac2bb50586.jpg
@@ -13368,8 +13338,8 @@ mika:
   birth: 6月20日
   jimusho: 东京俳优生活协同组合
   profile: https://haikyo.co.jp/profile/profile.php?ActorID=13077
-  twitter: null
-  instagram: null
+  twitter: https://twitter.com/Honami_Momose
+  instagram: https://www.instagram.com/honami_momose/
   blog: null
   check: false
   photo: null
@@ -13398,7 +13368,7 @@ mika:
   birth: 10月10日
   jimusho: ACROSS ENTERTAINMENT
   profile: https://across-ent.com/talent/women/rena_motomura.html
-  twitter: null
+  twitter: https://twitter.com/ofuton_to_gohan
   instagram: null
   blog: null
   check: false
@@ -13458,7 +13428,7 @@ mika:
   birth: 9月19日
   jimusho: Black Ship
   profile: https://www.blackship.jp/female/riaseko/
-  twitter: null
+  twitter: https://twitter.com/seko_ria
   instagram: null
   blog: null
   check: false
@@ -13488,7 +13458,7 @@ mika:
   birth: 12月31日
   jimusho: Holy Peak
   profile: https://holypeak.com/talent/voice-actor-women/%e7%b6%be%e5%92%b2%e7%a9%82%e9%9f%b3/
-  twitter: null
+  twitter: https://twitter.com/Ayasaki_Honon
   instagram: null
   blog: null
   check: false
@@ -13553,3 +13523,183 @@ mika:
   blog: null
   check: false
   photo: https://seigura.com/wp-content/uploads/2025/04/dd49088fcfa6247a46d1d145bef061af.jpg
+矢野优美华:
+  pysx: syymh
+  jaName:
+    - - 矢野
+      - やの
+    - - 優美華
+      - ゆみか
+  birth: 2月19日
+  jimusho: YU-RIN PRO
+  profile: https://yu-rin.com/talent/yourin_yy0219.html
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2025/04/b120ad2d1066d7968a49ca3e7ea8d69c.jpg
+凉泉樱花:
+  pysx: lqyh
+  jaName:
+    - - 涼泉
+      - すずみ
+    - - 桜花
+      - さくら
+  birth: 2004年3月5日
+  jimusho: Sony Music Artists
+  profile: https://www.sma.co.jp/s/sma/artist/657#/news/0
+  twitter: https://x.com/SuzumiSakura305
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+日菜:
+  pysx: rc
+  jaName:
+    - - 日菜
+      - ひなの
+    - - null
+      - null
+  birth: 2007年5月16日
+  jimusho: 81 Produce
+  profile: https://www.81produce.co.jp/dcms_plusdb/index.php/item?cell003=%E3%81%AF%E8%A1%8C&cell029=%E5%A5%B3%E6%80%A7&keyword=&cell028=&cell004=&name=%E6%97%A5%E8%8F%9C&id=414&label=1
+  twitter: null
+  instagram: null
+  blog: null
+  check: true
+  photo: null
+咲川阳菜乃:
+  pysx: xcycn
+  jaName:
+    - - 咲川
+      - さきかわ
+    - - ひなの
+      - null
+  birth: 2004年1月22日
+  jimusho: Stay Luck
+  profile: https://stay-luck.com/talent/sakikawa-hinano/
+  twitter: https://x.com/hinano_sak122
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+小宫山明里:
+  pysx: xgsml
+  jaName:
+    - - 小宮山
+      - こみやま
+    - - あかり
+      - null
+  birth: 2003年2月27日
+  jimusho: Sony Music Artists
+  profile: https://www.sma.co.jp/s/sma/artist/636?ima=0000#/news/0
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+凑美也:
+  pysx: cmy
+  jaName:
+    - - 湊
+      - みなと
+    - - みや
+      - null
+  birth: 12月16日
+  jimusho: 东京俳优生活协同组合
+  profile: https://haikyo.co.jp/profile/profile5.php?ActorID=13064
+  twitter: https://x.com/miya_minato1216
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2025/04/74e5682abc29690acfde59645aa50712.jpg
+铃木日菜:
+  pysx: lmrc
+  jaName:
+    - - 鈴木
+      - すずき
+    - - 日菜
+      - ひな
+  birth: 2月12日
+  jimusho: Mausu Promotion
+  profile: https://mausu.net/talent/suzuki-hina.html
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+齐藤未莉依:
+  pysx: qtwly
+  jaName:
+    - - 齊藤
+      - さいとう
+    - - 未莉依
+      - みりい
+  birth: 10月12日
+  jimusho: Raccoon Dog(预所属)
+  profile: https://www.raccoon-dog.co.jp/talent/r24-saito.html
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+千贺光莉:
+  pysx: qhgl
+  jaName:
+    - - 千賀
+      - せんが
+    - - 光莉
+      - ひかり
+  birth: 8月13日
+  jimusho: FIRST WIND production
+  profile: https://firstwind.co.jp/talentpage/senga_hikari/
+  twitter: https://twitter.com/Senga_Hikari
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+天音缘:
+  pysx: tyy
+  jaName:
+    - - 天音
+      - あまね
+    - - ゆかり
+      - null
+  birth: 11月4日
+  jimusho: Remax
+  profile: https://remax-web.jp/talent/amane-y/
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+药师寺李有:
+  pysx: yssly
+  jaName:
+    - - 薬師寺
+      - やくしじ
+    - - 李有
+      - りあ
+  birth: 9月11日
+  jimusho: Yu-rin Pro
+  profile: https://yu-rin.com/jr-woman/yakushiji-ria
+  twitter: https://x.com/_7aaqr2/
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+中林新夏:
+  pysx: zlxx
+  jaName:
+    - - 中林
+      - なかばやし
+    - - 新夏
+      - にいな
+  birth: 7月27日
+  jimusho: ARISE PROJECT
+  profile: https://arise-pj.co.jp/talent/niina-nakabayashi/
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: null
