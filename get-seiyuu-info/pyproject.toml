@@ -1,0 +1,10 @@
+[project]
+name = "get-seiyuu-info"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "lxml-html-clean>=0.4.5",
+    "requests-html>=0.10.0",
+]

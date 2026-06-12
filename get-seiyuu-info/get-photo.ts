@@ -28,7 +28,7 @@ const getPhoto = async (name: string) => {
     }
     for (const el of result) {
       if ($('.entry-title a', el).text().replace(/\s/g, '') == name) {
-        return $('.archive-thumbnail > a > img', el).attr('data-src')!;
+        return $('.archive-thumbnail > a > img', el).attr('src')!;
       }
     }
     logError(`${name} not match!`);

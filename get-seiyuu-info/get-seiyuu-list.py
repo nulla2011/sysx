@@ -17,7 +17,7 @@ def hasLettersAndDot(string):
 if __name__ == "__main__":
     seiyuuList = []
     session = HTMLSession()
-    r = session.get(SEIYUU_URL)
+    r = session.get(SEIYUU_URL,headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36", "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",})
     nameList60 = r.html.find(
         ".navbox .nowraplinks.mw-collapsible tr:nth-child(9) .nowraplinks.mw-collapsible .navbox-list p:nth-child(1) a"
     )
@@ -38,7 +38,7 @@ if __name__ == "__main__":
     )
     for name in [*nameList60, *nameList70, *nameList80, *nameList90, *nameList00, *nameListNu]:
         #if not hasLettersAndDot(name.text):  #去掉含英文的名字和带点的外文名字
-        if not (name.attrs.get('class')):  #去掉没页面的
+        if name.attrs.get('class') is None or ('new' not in name.attrs.get('class')):  #去掉没页面的
             seiyuuList.append([name.text, (list(name.absolute_links))[0]])
     with open(f'seiyuu-list_{time.strftime("%y%m%d", time.localtime()) }.csv', 'w', encoding='utf-8', newline='') as c:
         w = csv.writer(c)

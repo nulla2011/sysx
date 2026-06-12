@@ -5,7 +5,7 @@ import { logError, Stack } from './utils';
 //     let t = wtf(text).section('参见')?.links();
 //     console.log(t);
 // }
-function sliceText(text: string, startReg: RegExp, endMark = '}') {
+function sliceText(text: string, startReg: RegExp, type = '{') {
   let mStart = text.match(startReg)!;
   if (!mStart) {
     logError(`can\'t find ${startReg}`);
@@ -13,6 +13,10 @@ function sliceText(text: string, startReg: RegExp, endMark = '}') {
   }
   let curlyBrackets = new Stack();
   let end = mStart.index! + 1;
+  if (type == '{') {
+    end--;
+  }
+  const endMark = type === '{' ? '}' : type;
   while (true) {
     switch (text[end]) {
       case '{':
@@ -24,13 +28,13 @@ function sliceText(text: string, startReg: RegExp, endMark = '}') {
       default:
         break;
     }
-    if ((text[end] == endMark && curlyBrackets.isEmpty()) || end >= text.length) {
+    if ((text[end] === endMark && curlyBrackets.isEmpty()) || end >= text.length) {
       //maybe out of range
       break;
     }
     end++;
   }
-  return text.slice(mStart.index! + mStart[0].length, end - (endMark == '}' ? 1 : 0)); //double curly brackets
+  return text.slice(mStart.index! + mStart[0].length, end - (type === '{' ? 1 : 0)); //double curly brackets
 }
 
 String.prototype.removeHeimu = function () {
