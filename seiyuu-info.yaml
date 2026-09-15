@@ -14070,3 +14070,78 @@ mika:
   blog: null
   check: false
   photo: https://seigura.com/wp-content/uploads/2026/05/2362f0ffc41f9a7a476b8b526a0c1e10.jpg
+卷野椿:
+  pysx: jyc
+  jaName:
+    - - 巻野
+      - まきの
+    - - 椿
+      - つばき
+  birth: 2004年10月20日
+  jimusho: MusicRay'n
+  profile: https://musicrayn.com/s/mra/artist/makino_tsubaki?ima=3721&artist=makino_tsubaki
+  twitter: https://twitter.com/makino_tsubaki
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2024/05/c140124a6d50b936ef800ad85d76164b.jpg
+明智璃子:
+  pysx: mzlz
+  jaName:
+    - - 明智
+      - あけち
+    - - 璃子
+      - りこ
+  birth: 2003年12月22日
+  jimusho: 81 Produce
+  profile: https://www.81produce.co.jp/dcms_plusdb/index.php/item?cell003=%E3%81%82%E8%A1%8C&keyword=&cell028=&cell004=&name=%E6%98%8E%E6%99%BA%E3%80%80%E7%92%83%E5%AD%90&id=450&label=1
+  twitter: https://twitter.com/akc1rk
+  instagram: null
+  blog: null
+  check: false
+  photo: https://seigura.com/wp-content/uploads/2026/05/c84321b6d602dc7330790375c0702011.jpg
+小山奈樱:
+  pysx: xsny
+  jaName:
+    - - 小山
+      - おやま
+    - - 奈桜
+      - なお
+  birth: 2007年9月10日
+  jimusho: Avex Pictures
+  profile: https://avex-pictures.co.jp/lineup/83674/
+  twitter: null
+  instagram: null
+  blog: null
+  check: true
+  photo: null
+园田玲:
+  pysx: ytl
+  jaName:
+    - - 園田
+      - そのだ
+    - - れい
+      - null
+  birth: 2002年1月10日
+  jimusho: 81 Produce
+  profile: https://www.81produce.co.jp/dcms_plusdb/index.php/item?id=411
+  twitter: null
+  instagram: null
+  blog: null
+  check: false
+  photo: null
+其原有沙:
+  pysx: qyys
+  jaName:
+    - - 其原
+      - そのはら
+    - - 有沙
+      - ありさ
+  birth: 2001年8月24日
+  jimusho: Space Craft
+  profile: https://www.spacecraft.co.jp/talent/arisa-sonohara
+  twitter: https://x.com/sonohara_staff
+  instagram: null
+  blog: null
+  check: true
+  photo: null
