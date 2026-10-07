@@ -1,66 +1,77 @@
-name: Build and Deploy
-on: 
+name: Build and Deploy to Vercel
+
+on:
   push:
-    branches: ['main']
-permissions:
-  contents: write
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  # 外部项目配置（按需修改）
+  EXT_REPO: https://github.com/nulla2011/sysx-wordle
+  EXT_REF: master
+  EXT_DIR: external/wordle
+  EXT_BUILD_OUTPUT: dist        # 外部项目构建产物目录
+  PUBLIC_TARGET: public/wordle   # 拷贝到本项目的目标目录
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v3
-      - name: Checkout gh page
-        uses: actions/checkout@v2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          repository: nulla2011/nulla2011.github.io
-          path: ghPage
-          token: ${{ secrets.PAT }}
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+          version: 12
+      # 1. 拉取本项目
+      - name: Checkout current repo
+        uses: actions/checkout@v4
+
+      # 2. 拉取外部项目（私有仓库用 PAT）
+      - name: Checkout external repo
+        uses: actions/checkout@v4
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        id: pnpm-install
+          repository: nulla2011/sysx-wordle
+          ref: master
+          path: ${{ env.EXT_DIR }}
+          # 如需拉取子模块：submodules: recursive
+
+      # 3. 配置 Node + pnpm 缓存（两个 lockfile 一起缓存）
+      - name: Setup Node with pnpm cache
+        uses: actions/setup-node@v4
         with:
-          version: 8
-          run_install: false
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: |
+            pnpm-lock.yaml
+            ${{ env.EXT_DIR }}/pnpm-lock.yaml
+
+      - name: Build external project
+        working-directory: ${{ env.EXT_DIR }}
         run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - name: Setup pnpm cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-      - name: Install dependencies
-        run: pnpm install
-      - name: Build 🔧
+          pnpm install --frozen-lockfile
+          pnpm run build:subpath
+        env:
+          ANSWER_API: ${{ vars.WORDLE_API }}
+
+      # 4. 拷贝产物到本项目 public
+      - name: Copy external build output into public
         run: |
-          pnpm run build:github
-      - name: Overwrite sysx
+          mkdir -p ${{ env.PUBLIC_TARGET }}
+          rm -rf ${{ env.PUBLIC_TARGET }}/*
+          cp -r ${{ env.EXT_DIR }}/${{ env.EXT_BUILD_OUTPUT }}/. ${{ env.PUBLIC_TARGET }}/
+
+      # 5. 构建本项目
+      - name: Install & build current project
         run: |
-          rm -rf ghPage/sysx/**
-          cp -r dist/* ghPage/sysx/
-      - name: Commit changes
+          pnpm install --frozen-lockfile
+          pnpm run build
+
+      # 6. 部署到 Vercel
+      - name: Deploy to Vercel (production)
         run: |
-          cd ghPage
-          git add ./
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git commit -m "Update sysx"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          branch: master
-          repository: nulla2011/nulla2011.github.io
-          directory: ghPage
-          github_token: ${{ secrets.PAT }}
+          pnpm add -g vercel@latest
+          vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+          vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+          vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}

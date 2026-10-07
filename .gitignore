@@ -31,3 +31,5 @@ seiyuu-info.json
 *.bak
 note.md
 *.secr
+
+*.old.*
