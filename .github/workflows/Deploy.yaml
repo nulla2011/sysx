@@ -50,7 +50,7 @@ jobs:
           pnpm install --frozen-lockfile
           pnpm run build:subpath
         env:
-          ANSWER_API: ${{ vars.WORDLE_API }}
+          VITE_ANSWER_API: ${{ vars.WORDLE_API }}
 
       # 4. 拷贝产物到本项目 public
       - name: Copy external build output into public
