@@ -60,10 +60,10 @@ jobs:
           cp -r ${{ env.EXT_DIR }}/${{ env.EXT_BUILD_OUTPUT }}/. ${{ env.PUBLIC_TARGET }}/
 
       # 5. 构建本项目
-      - name: Install & build current project
-        run: |
-          pnpm install --frozen-lockfile
-          pnpm run build
+      # - name: Install & build current project
+      #   run: |
+      #     pnpm install --frozen-lockfile
+      #     pnpm run build
 
       # 6. 部署到 Vercel
       - name: Deploy to Vercel (production)
