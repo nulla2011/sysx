@@ -17,7 +17,8 @@ def hasLettersAndDot(string):
 if __name__ == "__main__":
     seiyuuList = []
     session = HTMLSession()
-    r = session.get(SEIYUU_URL,headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36", "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",})
+    r = session.get(SEIYUU_URL, headers={"User-Agent": "seiyuu-list-crawler/0.1"}, timeout=30)
+    r.raise_for_status()
     nameList60 = r.html.find(
         ".navbox .nowraplinks.mw-collapsible tr:nth-child(9) .nowraplinks.mw-collapsible .navbox-list p:nth-child(1) a"
     )
